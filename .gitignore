@@ -1,0 +1,17 @@
+# File e cartelle generati da Eclipse
+/build/
+/bin/
+.settings/
+.classpath
+.project
+
+# File compilati Java
+*.class
+
+# Log e file temporanei
+*.log
+*.tmp
+
+# File di sistema
+Thumbs.db
+.DS_Store
