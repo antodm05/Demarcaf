@@ -73,3 +73,7 @@ INSERT INTO prodotto (nome, descrizione, prezzo, quantita, id_categoria) VALUES
 SELECT * FROM categoria;
 SELECT * FROM utente;
 SELECT * FROM prodotto;
+
+
+USE demarcaf;
+SELECT * FROM utente; 
