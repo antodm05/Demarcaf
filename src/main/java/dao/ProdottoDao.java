@@ -10,4 +10,8 @@ public interface ProdottoDao
     //  lista di tutti i prodotti attivi quelli che hanno la fleg a true 
     List<ProdottoBean> doRetrieveAllActive() throws SQLException;
 
+    
+ // Restituisce TUTTI i prodotti, anche quelli disattivati (per l'admin)
+    List<ProdottoBean> doRetrieveAll() throws SQLException;
+    
 }
