@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Login - DEMARCAF</title>
+</head>
+<body>
+
+    <h1>Accedi</h1>
+
+    <form action="LoginServlet" method="post">
+
+        <fieldset>
+            <legend>Credenziali</legend>
+
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required="required"/>
+            </p>
+
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required="required"/>
+            </p>
+        </fieldset>
+
+        <p>
+            <input type="submit" value="Accedi"/>
+        </p>
+
+    </form>
+
+    <p>Non hai un account? <a href="registrazione.html">Registrati</a></p>
+
+</body>
+</html>
