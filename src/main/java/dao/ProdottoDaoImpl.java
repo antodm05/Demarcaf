@@ -113,6 +113,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     //---------------------------------------------------
     
     @Override
+    //metto solo la fleg a false
     public void doSoftDelete(int idProdotto) throws SQLException {
 
         // il prodotto sparisce dal catalogo ma resta negli ordini storici
@@ -128,6 +129,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     
     
     @Override
+    //recupero un prodotto dal suo ID
     public ProdottoBean doRetrieveById(int idProdotto) throws SQLException {
 
         ProdottoBean prodotto = null;
