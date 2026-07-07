@@ -16,7 +16,7 @@
   
     <table border="1">
         <thead>      <!--  intestazione della tabella -->
-            <tr>
+            <tr>     <!--  riga-->
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Prezzo</th>
