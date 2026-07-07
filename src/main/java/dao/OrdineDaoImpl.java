@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -95,4 +96,45 @@ public class OrdineDaoImpl implements OrdineDao {
             }
         }
     }
+    
+    
+//-------------------------------------------------------------------------
+    
+    @Override
+    public List<OrdineBean> doRetrieveByUtente(int idUtente) throws SQLException {
+
+        // Lista che conterra' gli ordini trovati
+        List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
+
+        // Cerco gli ordini di questo utente, [dal piu recente al piu vecchio] FILTRO PER ID COSI OGNI UTENTE VEDE IL PROPRIO STORICO 
+        String sql = "SELECT * FROM ordine WHERE id_utente = ? ORDER BY data DESC";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idUtente);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                // Ciclo su tutti gli ordini trovati 
+                while (rs.next()) {
+                    OrdineBean ordine = new OrdineBean();
+                    ordine.setIdOrdine(rs.getInt("id_ordine"));
+                    ordine.setData(rs.getTimestamp("data"));
+                    ordine.setTotale(rs.getDouble("totale"));
+                    ordine.setIndirizzo(rs.getString("indirizzo"));
+                    ordine.setCitta(rs.getString("citta"));
+                    ordine.setCap(rs.getString("cap"));
+                    ordine.setProvincia(rs.getString("provincia"));
+                    ordine.setMetodoPagamento(rs.getString("metodo_pagamento"));
+                    ordine.setStato(rs.getString("stato"));
+                    ordine.setIdUtente(rs.getInt("id_utente"));
+                    listaOrdini.add(ordine);
+                }
+            }
+        }
+        return listaOrdini;
+    }
+    
+   
+    
 }

@@ -11,4 +11,8 @@ public interface OrdineDao {
     // Salva un ordine completo: l'ordine + dettagli Riceve l'ordine (con i dati di spedizione) e gli articoli del carrello.
     void doSave(OrdineBean ordine, List<ArticoloCarrello> articoli) throws SQLException;
 
+    
+    
+ // Restituisce tutti gli ordini di un utente lo storico
+    List<OrdineBean> doRetrieveByUtente(int idUtente) throws SQLException;
 }
