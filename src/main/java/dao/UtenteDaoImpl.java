@@ -38,7 +38,7 @@ public class UtenteDaoImpl implements UtenteDao {
             ps.executeUpdate();
         }
     }
-    
+    //-----------------------------------------------------------------------------------
     @Override
     public UtenteBean doRetrieveByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM utente WHERE email = ?";
