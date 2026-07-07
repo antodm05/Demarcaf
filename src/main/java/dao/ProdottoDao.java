@@ -11,7 +11,10 @@ public interface ProdottoDao
     List<ProdottoBean> doRetrieveAllActive() throws SQLException;
 
     
- // Restituisce TUTTI i prodotti, anche quelli disattivati (per l'admin)
+ // Restituisce tutti i prodotti, anche quelli disattivati solo per l'admin
     List<ProdottoBean> doRetrieveAll() throws SQLException;
+    
+ // Salva un nuovo prodotto nel database
+    void doSave(ProdottoBean prodotto) throws SQLException;
     
 }
