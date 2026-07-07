@@ -136,10 +136,10 @@ public class ProdottoDaoImpl implements ProdottoDao {
         try (Connection conn = connessioneDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, idProdotto);//sostituisce ? con id 
+            ps.setInt(1, idProdotto); //sostituisce ? con id 
 
             try (ResultSet rs = ps.executeQuery()) {
-                // Uso if essendo 1 solo prodotto : 
+                // Uso if essendo 1 solo prodotto  
                 if (rs.next()) {
                     prodotto = new ProdottoBean();
                     prodotto.setIdProdotto(rs.getInt("id_prodotto"));
@@ -154,6 +154,30 @@ public class ProdottoDaoImpl implements ProdottoDao {
             }
         }
         return prodotto;
+    }
+    
+    //------------------------------------------------------
+    
+    @Override
+    public void doUpdate(ProdottoBean prodotto) throws SQLException {
+
+        // UPDATE aggiorna una riga esistente, identificata dall'id (WHERE)
+        String sql = "UPDATE prodotto SET nome = ?, descrizione = ?, prezzo = ?, "
+                   + "quantita = ?, immagine = ?, id_categoria = ? WHERE id_prodotto = ?";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, prodotto.getNome());
+            ps.setString(2, prodotto.getDescrizione());
+            ps.setDouble(3, prodotto.getPrezzo());
+            ps.setInt(4, prodotto.getQuantita());
+            ps.setString(5, prodotto.getImmagine());
+            ps.setInt(6, prodotto.getIdCategoria());
+            ps.setInt(7, prodotto.getIdProdotto()); // il ? del WHERE: quale riga aggiornare
+
+            ps.executeUpdate();
+        }
     }
     
     

@@ -24,4 +24,8 @@ public interface ProdottoDao
  // Restituisce un singolo prodotto dato il suo id (per la modifica)
     ProdottoBean doRetrieveById(int idProdotto) throws SQLException;
     
+    
+ // Aggiorna un prodotto esistente nel database
+    void doUpdate(ProdottoBean prodotto) throws SQLException;
+    
 }
