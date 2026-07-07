@@ -18,7 +18,7 @@ public class ArticoloCarrello implements Serializable {
     public ArticoloCarrello() {
     }
 
-    // Costruttore comodo: crea l'articolo passando subito prodotto e quantita
+    // crea l'articolo passando subito prodotto e quantita
     public ArticoloCarrello(ProdottoBean prodotto, int quantita) {
         this.prodotto = prodotto;
         this.quantita = quantita;
@@ -40,7 +40,7 @@ public class ArticoloCarrello implements Serializable {
         this.quantita = quantita;
     }
 
-    // Metodo comodo: calcola il costo di questa riga (prezzo x quantita) per mostrare il totale parziale.
+    //  calcola il costo di questa riga per mostrare il totale parziale.
     public double getSubtotale() {
         return prodotto.getPrezzo() * quantita;
     }

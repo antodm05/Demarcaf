@@ -46,7 +46,7 @@ public class Carrello implements Serializable {
         articoli.removeIf(articolo -> articolo.getProdotto().getIdProdotto() == idProdotto);
     }
 
-    // Svuota tutto il carrello , magari dopo l'acquisto lo faccio attivare
+    // Svuota tutto il carrello , tipo dopo l'acquisto 
     public void svuota() {
         articoli.clear();
     }
