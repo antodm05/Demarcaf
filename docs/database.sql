@@ -78,5 +78,28 @@ SELECT * FROM prodotto;
 USE demarcaf;
 SELECT * FROM utente; 
 
+
 USE demarcaf;
-SELECT * FROM prodotto
+SELECT id_prodotto, nome, attivo FROM prodotto;
+
+USE demarcaf;
+   SELECT * FROM ordine;
+   SELECT * FROM dettaglio_ordine;
+   
+   USE demarcaf;
+SELECT email, ruolo FROM utente WHERE email = 'demarcoa29@gmail.com';
+
+
+USE demarcaf;
+SELECT id_utente, email, ruolo FROM utente;
+
+
+USE demarcaf;
+INSERT INTO utente (email, password, ruolo, nome, cognome) VALUES
+('admin2@demarcaf.it', SHA2('admin123', 512), 'admin', 'Antonio', 'Admin');
+
+UPDATE utente SET ruolo = 'admin' WHERE email = 'admin@demarcaf.it';
+
+
+
+SELECT * FROM dettaglio_ordine;
