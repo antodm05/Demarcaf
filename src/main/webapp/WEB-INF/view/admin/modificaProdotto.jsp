@@ -48,22 +48,28 @@
 
         <!-- Ciclo su OGNI categoria presente nel db -->
         <c:forEach var="categoria" items="${listaCategorie}">
+        
+         <!-- Per ogni categoria deve essere quella del prodotto che sto modificando, c:choose che funziona come un if/else -->
+         
+<!-- questa categoria coincide con quella del prodotto - Confronto l'id della categoria del ciclo con l id categoria del prodotto -->
 
-            <!-- Per ogni categoria deve essere quella del prodotto che sto modificando, c:choose che funziona come un if/else -->
-            <c:choose>
+<!-- Sono uguali: aggiungo selected="selected" cosi' il menu si apre gia' su questa categoria -->
 
-                <!-- questa categoria coincide con quella del prodotto - Confronto l'id della categoria del ciclo con l id categoria del prodotto -->
-                <c:when test="${categoria.idCategoria == prodotto.idCategoria}">
+  <!--  ALTRIMENTI: tutte le altre categorie -->
+            <c:choose>            
+            
 
-                    <!-- Sono uguali: aggiungo selected="selected" cosi' il menu si apre gia' su questa categoria -->
-                    <option value="${categoria.idCategoria}" selected="selected">
+                <c:when test="${categoria.idCategoria == prodotto.idCategoria}">  
+                                    
+                    <option value="${categoria.idCategoria}" selected="selected"> 
+                    
                         <c:out value="${categoria.nome}"/>
                     </option>
 
                 </c:when>
 
-                <!--  ALTRIMENTI: tutte le altre categorie -->
-                <c:otherwise>
+                <c:otherwise>               
+                
 
                     <!--  SENZA selected -->
                     <option value="${categoria.idCategoria}">
