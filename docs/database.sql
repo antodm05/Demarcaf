@@ -77,3 +77,6 @@ SELECT * FROM prodotto;
 
 USE demarcaf;
 SELECT * FROM utente; 
+
+USE demarcaf;
+SELECT * FROM prodotto
