@@ -110,5 +110,51 @@ public class ProdottoDaoImpl implements ProdottoDao {
         }
     }
     
+    //---------------------------------------------------
+    
+    @Override
+    public void doSoftDelete(int idProdotto) throws SQLException {
+
+        // il prodotto sparisce dal catalogo ma resta negli ordini storici
+        String sql = "UPDATE prodotto SET attivo = false WHERE id_prodotto = ?";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idProdotto); //sostituisce il punto interrogativo
+            ps.executeUpdate(); // invio la query
+        }
+    }
+    
+    
+    @Override
+    public ProdottoBean doRetrieveById(int idProdotto) throws SQLException {
+
+        ProdottoBean prodotto = null;
+        String sql = "SELECT * FROM prodotto WHERE id_prodotto = ?";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idProdotto);//sostituisce ? con id 
+
+            try (ResultSet rs = ps.executeQuery()) {
+                // Uso if essendo 1 solo prodotto : 
+                if (rs.next()) {
+                    prodotto = new ProdottoBean();
+                    prodotto.setIdProdotto(rs.getInt("id_prodotto"));
+                    prodotto.setNome(rs.getString("nome"));
+                    prodotto.setDescrizione(rs.getString("descrizione"));
+                    prodotto.setPrezzo(rs.getDouble("prezzo"));
+                    prodotto.setQuantita(rs.getInt("quantita"));
+                    prodotto.setImmagine(rs.getString("immagine"));
+                    prodotto.setAttivo(rs.getBoolean("attivo"));
+                    prodotto.setIdCategoria(rs.getInt("id_categoria"));
+                }
+            }
+        }
+        return prodotto;
+    }
+    
     
 }
