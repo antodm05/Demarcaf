@@ -30,7 +30,7 @@ public class AdminAggiornaProdottoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 1. Leggo i dati dal form 
+        //  Leggo i dati dal form 
         int idProdotto = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         String descrizione = request.getParameter("descrizione");
