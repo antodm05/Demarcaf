@@ -1,0 +1,98 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import model.ArticoloCarrello;
+import model.OrdineBean;
+
+public class OrdineDaoImpl implements OrdineDao {
+
+    private DataSource connessioneDB;
+
+    public OrdineDaoImpl(DataSource ds) {
+        this.connessioneDB = ds;
+    }
+//---------------------------------------------------------------------
+    @Override
+    public void doSave(OrdineBean ordine, List<ArticoloCarrello> articoli) throws SQLException {
+
+        // var per la connessione
+        Connection conn = null;
+
+        try {
+            conn = connessioneDB.getConnection();//  Apro la connessione al database dal pool
+
+            //  disabilito il salvataggio automatico pk voglio che si salvi tutto (ordine + righe) come blocco unico senza dover fare auto salvare le query
+            conn.setAutoCommit(false);
+
+            // salvo l'ordine principale con NOW per prendere la data 
+            String sqlOrdine = "INSERT INTO ordine (data, totale, indirizzo, citta, cap, "
+                    + "provincia, metodo_pagamento, stato, id_utente) "
+                    + "VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            // Statement.RETURN_GENERATED_KEYS: mi faccio restituire l'id per poter identificare l'ordine e collegarci le righe gli sto chiedendo di ricordarlo
+            PreparedStatement psOrdine = conn.prepareStatement(sqlOrdine, Statement.RETURN_GENERATED_KEYS);
+            psOrdine.setDouble(1, ordine.getTotale()); //valore dell'oggetto
+            psOrdine.setString(2, ordine.getIndirizzo()); //riempio i ? dell 'ordine ed eseguo INSERT
+            psOrdine.setString(3, ordine.getCitta());
+            psOrdine.setString(4, ordine.getCap());
+            psOrdine.setString(5, ordine.getProvincia());
+            psOrdine.setString(6, ordine.getMetodoPagamento());
+            psOrdine.setString(7, "in elaborazione"); // per lo stato
+            psOrdine.setInt(8, ordine.getIdUtente());
+            psOrdine.executeUpdate();
+
+            // Recupero l'id dell'ordine appena creato 
+            int idOrdineGenerato = 0;
+            try (ResultSet rs = psOrdine.getGeneratedKeys()) {
+                if (rs.next()) {
+                    idOrdineGenerato = rs.getInt(1); // prendo solo il primo che è stato generato
+                }
+            }
+            psOrdine.close();
+
+            //  dopo aver preso id ordine e aver riempito i campi salvo ogni riga in dettaglio 
+            String sqlDettaglio = "INSERT INTO dettaglio_ordine (id_ordine, id_prodotto, "
+                    + "quantita, prezzo_unitario) VALUES (?, ?, ?, ?)";
+            PreparedStatement psDettaglio = conn.prepareStatement(sqlDettaglio);
+
+            // Per ogni articolo del carrello creo una riga
+            for (ArticoloCarrello articolo : articoli) {
+                psDettaglio.setInt(1, idOrdineGenerato); // collego questa riga all'ordine 
+                psDettaglio.setInt(2, articolo.getProdotto().getIdProdotto());
+                psDettaglio.setInt(3, articolo.getQuantita());
+                
+                // copio il prezzo ATTUALE del prodotto  Cosi se il prezzo cambiera l'ordine mantiene questo 
+                
+                psDettaglio.setDouble(4, articolo.getProdotto().getPrezzo());
+                psDettaglio.addBatch(); // accumulo le righe cosi le eseguo tutte insieme 
+            }
+            psDettaglio.executeBatch(); // eseguo tutte le righe insieme
+            psDettaglio.close();
+
+            // TUTTO OK: confermo la transazione (salva davvero tutto)
+            conn.commit();
+
+        } catch (SQLException e) {
+            // ERRORE: annullo tutto cosi' non resta un ordine a meta usando rollback. ( basta un errore)
+            if (conn != null) {
+                conn.rollback();
+            }
+            throw e; // rilancio l'errore 
+
+        } finally {
+            // di base  Riporto la connessione allo stato normale e la chiudo
+            if (conn != null) {
+                conn.setAutoCommit(true);
+                conn.close();
+            }
+        }
+    }
+}
