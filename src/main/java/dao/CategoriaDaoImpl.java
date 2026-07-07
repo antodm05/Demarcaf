@@ -21,7 +21,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 
     @Override
     public List<CategoriaBean> doRetrieveAll() throws SQLException {
-
+//seleziono tutti 
         List<CategoriaBean> listaCategorie = new ArrayList<CategoriaBean>();
         String sql = "SELECT * FROM categoria";
 
