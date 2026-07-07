@@ -86,6 +86,29 @@ public class ProdottoDaoImpl implements ProdottoDao {
         }
         return listaProdotti;
     }
+    //-----------------------------------------------------
+    
+    @Override
+    public void doSave(ProdottoBean prodotto) throws SQLException {
+
+       
+        String sql = "INSERT INTO prodotto (nome, descrizione, prezzo, quantita, immagine, id_categoria) "
+                   + "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            // Riempio i ? con i dati 
+            ps.setString(1, prodotto.getNome());
+            ps.setString(2, prodotto.getDescrizione());
+            ps.setDouble(3, prodotto.getPrezzo());
+            ps.setInt(4, prodotto.getQuantita());
+            ps.setString(5, prodotto.getImmagine());
+            ps.setInt(6, prodotto.getIdCategoria());
+
+            ps.executeUpdate(); // per INSERT
+        }
+    }
     
     
 }
