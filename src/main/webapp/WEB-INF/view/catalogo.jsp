@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Catalogo - DEMARCAF</title>
+    <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
 

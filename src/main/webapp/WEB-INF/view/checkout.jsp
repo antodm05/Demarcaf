@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Completa l'ordine - DEMARCAF</title>
+    <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
 

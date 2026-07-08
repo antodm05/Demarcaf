@@ -5,15 +5,16 @@
 <head>
     <meta charset="utf-8"/>
     <title>Gestione Ordini - Area Admin</title>
+    <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
 
     <h1>Gestione Ordini</h1>
 
-    <!-- SEZIONE FILTRI -->
+   
     <h2>Filtra ordini</h2>
 
-    <!-- Filtro per date. PREFERISCO get cosi i filtri restano visibili nell'URL -->
+    <!-- Filtro per date , get cosi i filtri restano visibili nell'URL -->
     <form action="AdminOrdiniServlet" method="get">
         <fieldset>
             <legend>Per data</legend>
@@ -41,10 +42,10 @@
         </fieldset>
     </form>
 
-    <!-- Link per rimuovere i filtri  -->
+   
     <p><a href="AdminOrdiniServlet">Mostra tutti gli ordini</a></p>
 
-    <!-- TABELLA ORDINI -->
+    <!-- tab ordini -->
     <h2>Elenco ordini</h2>
 
     <c:choose>
@@ -79,7 +80,7 @@
         </c:otherwise>
     </c:choose>
 
-    <p><a href="AdminProdottiServlet">Gestione prodotti</a> | <a href="index.html">Home</a></p>
+    <p><a href="AdminProdottiServlet">Gestione prodotti</a> | <a href="index.jsp">Home</a></p>
 
 </body>
 </html>

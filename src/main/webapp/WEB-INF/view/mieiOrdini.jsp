@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>I miei ordini - DEMARCAF</title>
+    <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
 
@@ -47,7 +48,7 @@
         </c:otherwise>
     </c:choose>
 
-    <p><a href="index.html">Torna alla home</a></p>
+    <p><a href="index.jsp">Torna alla home</a></p>
 
 </body>
 </html>
