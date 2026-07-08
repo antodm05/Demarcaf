@@ -135,6 +135,107 @@ public class OrdineDaoImpl implements OrdineDao {
         return listaOrdini;
     }
     
+    //--------------------------------------------------------------------------------
+    // TUTTI GLI ORDINI per l'admin senza filtri
+    @Override
+    public List<OrdineBean> doRetrieveAllPerAdmin() throws SQLException {
+
+        List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
+
+        // Prendo tutti gli ordini + l'email del cliente con la JOIN tramite id_utente, cosi' posso avere anche l'email del cliente.
+
+        String sql = "SELECT ordine.*, utente.email AS email_cliente FROM ordine "
+                   + "JOIN utente ON ordine.id_utente = utente.id_utente " // cosi per ogni ordine ho anche i dati del cliente che l'ha fatto
+                   + "ORDER BY ordine.data DESC";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                listaOrdini.add(estraiOrdine(rs));
+            }
+        }
+        return listaOrdini;
+    }
+
+//----------------------------------------------------------------------------
+    
+    //  ORDINI PER INTERVALLO DI DATE
+    @Override
+    public List<OrdineBean> doRetrieveByData(String dataInizio, String dataFine) throws SQLException {
+
+        List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
+
+       
+        // dalla data di inizio in poi e fino alla data di fine
+        
+        String sql = "SELECT ordine.*, utente.email AS email_cliente FROM ordine "
+                   + "JOIN utente ON ordine.id_utente = utente.id_utente "
+                   + "WHERE ordine.data >= ? AND ordine.data <= ? "
+                   + "ORDER BY ordine.data DESC";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+      
+            ps.setString(1, dataInizio + " 00:00:00"); // sostituisco i ?
+            ps.setString(2, dataFine + " 23:59:59");
+
+            try (ResultSet rs = ps.executeQuery()) {
+            	
+                while (rs.next()) {
+                    listaOrdini.add(estraiOrdine(rs));
+                }
+            }
+        }
+        return listaOrdini;
+    }
+
+
+    // --------------------------------------------------------------
+    //  ORDINI DI UN CLIENTE cercato per email
+    @Override
+    public List<OrdineBean> doRetrieveByEmailCliente(String email) throws SQLException {
+
+        List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
+
+    
+        // LIKE % fa una ricerca PARZIALE non serve scrivere l'email esatta
+        String sql = "SELECT ordine.*, utente.email AS email_cliente FROM ordine "
+                   + "JOIN utente ON ordine.id_utente = utente.id_utente "
+                   + "WHERE utente.email LIKE ? "
+                   + "ORDER BY ordine.data DESC";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, "%" + email + "%");
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    listaOrdini.add(estraiOrdine(rs));
+                }
+            }
+        }
+        return listaOrdini;
+    }
+
+
+    // -------------------------------------------------------------------
+    // trasforma una riga in un OrdineBean Lo uso in tutti e 3 i metodi
+    private OrdineBean estraiOrdine(ResultSet rs) throws SQLException {
+        OrdineBean ordine = new OrdineBean();
+        ordine.setIdOrdine(rs.getInt("id_ordine"));
+        ordine.setData(rs.getTimestamp("data"));
+        ordine.setTotale(rs.getDouble("totale"));
+        ordine.setIndirizzo(rs.getString("indirizzo"));
+        ordine.setCitta(rs.getString("citta"));
+        ordine.setStato(rs.getString("stato"));
+        ordine.setIdUtente(rs.getInt("id_utente"));
+        ordine.setEmailCliente(rs.getString("email_cliente"));
+        return ordine;
+    }
    
     
 }
