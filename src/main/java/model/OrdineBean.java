@@ -15,6 +15,7 @@ public class OrdineBean implements Serializable {
     private String metodoPagamento;
     private String stato;
     private int idUtente;
+    private String emailCliente;
 
     public OrdineBean() {
 
@@ -98,6 +99,14 @@ public class OrdineBean implements Serializable {
 
 	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
+	}
+	
+	public String getEmailCliente() {
+	    return emailCliente;
+	}
+
+	public void setEmailCliente(String emailCliente) {
+	    this.emailCliente = emailCliente;
 	}
     
     

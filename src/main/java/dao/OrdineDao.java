@@ -15,4 +15,15 @@ public interface OrdineDao {
     
  // Restituisce tutti gli ordini di un utente lo storico
     List<OrdineBean> doRetrieveByUtente(int idUtente) throws SQLException;
+    
+ // Tutti gli ordini di tutti i clienti per l'admin
+    List<OrdineBean> doRetrieveAllPerAdmin() throws SQLException;
+
+    // Ordini filtrati per intervallo di date 
+    List<OrdineBean> doRetrieveByData(String dataInizio, String dataFine) throws SQLException;
+
+    // Ordini di un cliente cercato per email
+    List<OrdineBean> doRetrieveByEmailCliente(String email) throws SQLException;
+    
+    
 }
