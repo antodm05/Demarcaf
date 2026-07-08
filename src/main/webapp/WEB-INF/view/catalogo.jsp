@@ -19,7 +19,7 @@
     <!-- Ciclo su tutti i prodotti attivi -->
     <c:forEach var="prodotto" items="${listaProdotti}">
 
-        <div>
+    <div class="catalogo-prodotto">
             <h3><c:out value="${prodotto.nome}"/></h3>
             <p><c:out value="${prodotto.descrizione}"/></p>
             <p>Prezzo: &euro; <c:out value="${prodotto.prezzo}"/></p>

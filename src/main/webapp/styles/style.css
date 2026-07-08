@@ -142,5 +142,71 @@ tr:nth-child(even) {
     background-color: #F9F6F0;
 }
 
+                                    /* resposive  */
+                                    
+@media (max-width: 600px) {
+
+    
+    nav ul {
+        flex-direction: column;   /* da riga a colonna */
+        gap: 10px;
+    }
+
+    /* Le etichette dei form vanno sopra i campi */
+    label {
+        display: block;    /*  occupa tutta la riga andando  a capo */
+        width: auto;       
+        margin-bottom: 5px;
+    }
+
+                                               /* per i campi do molto spazio */
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    select {
+        width: 90%;
+    }
+
+    /* anche per le tab */
+    table {
+        width: 100%;
+        margin: 10px 0;
+        font-size: 13px;   
+    }
+
+    
+    th, td {
+        padding: 6px;
+    }
+    
+   /* miglioro un attimo lo spazio tra bottone e quantita*/
 
 
+.catalogo-prodotto input[type="submit"] {
+    margin-top: 10px;
+}
+
+
+input[type="submit"] {
+    margin-top: 8px;
+}
+
+/* Riquadro attorno */
+.catalogo-prodotto {
+    background-color: #FFFFFF;
+    border: 1px solid #E0D6C8;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin: 15px 20px;
+} 
+
+img {
+    max-width: 100%;   /* l'immagine non supera la larghezza disponibile */
+    height: auto;      
+}
+    
+}
