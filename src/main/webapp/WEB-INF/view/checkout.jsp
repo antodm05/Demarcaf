@@ -47,8 +47,11 @@
             </p>
 
             <p>
-                <label for="citta">Citta':</label>
-                <input type="text" id="citta" name="citta" onchange="validaCitta()"/>
+                <label for="citta">Citta':</label>  <!-- lo riempio via ajax-->
+                
+                <select id="citta" name="citta">
+                    <option value="">-- Prima scegli la provincia --</option>
+                </select>
                 <span id="erroreCitta" class="messaggioErrore"></span>
             </p>
 
@@ -59,8 +62,15 @@
             </p>
 
             <p>
-                <label for="provincia">Provincia (sigla):</label>
-                <input type="text" id="provincia" name="provincia" maxlength="2" onchange="validaProvincia()"/> 
+                <label for="provincia">Provincia:</label>
+                
+                <!--via ajax lo modifico -->
+                <select id="provincia" name="provincia" onchange="caricaComuni()">
+                    <option value="">-- Seleziona la provincia --</option>
+                    <option value="SA">Salerno (SA)</option>
+                    <option value="NA">Napoli (NA)</option>
+                    <option value="AV">Avellino (AV)</option>
+                </select>
                 <span id="erroreProvincia" class="messaggioErrore"></span>
             </p>
         </fieldset>
@@ -89,6 +99,8 @@
     <!--alla fine scrpt di validazione -->
     
     <script src="scripts/validazioneCheckout.js"></script>
+        <script src="scripts/ajaxComuni.js"></script>
+    
 
 </body>
 </html>
