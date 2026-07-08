@@ -30,42 +30,45 @@
             </c:forEach>
         </tbody>
     </table>
-    
     <h3>Totale: &euro; <c:out value="${carrello.totale}"/></h3>
 
-    <!--  DATI DI SPEDIZIONE -->
+    <!-- form dati di spedizione con validazione JS  -->
+    
     <h2>Dati di spedizione</h2>
-    <form action="ConfermaOrdineServlet" method="post">
+    <form action="ConfermaOrdineServlet" method="post" onsubmit="return validaFormCheckout()">
 
         <fieldset>
             <legend>Indirizzo</legend>
 
             <p>
                 <label for="indirizzo">Indirizzo (via e numero):</label>
-                <input type="text" id="indirizzo" name="indirizzo" required="required"/>
+                <input type="text" id="indirizzo" name="indirizzo" onchange="validaIndirizzo()"/>
+                <span id="erroreIndirizzo" class="messaggioErrore"></span>
             </p>
 
             <p>
                 <label for="citta">Citta':</label>
-                <input type="text" id="citta" name="citta" required="required"/>
+                <input type="text" id="citta" name="citta" onchange="validaCitta()"/>
+                <span id="erroreCitta" class="messaggioErrore"></span>
             </p>
 
             <p>
                 <label for="cap">CAP:</label>
-                <input type="text" id="cap" name="cap" required="required"/>
+                <input type="text" id="cap" name="cap" onchange="validaCap()"/>
+                <span id="erroreCap" class="messaggioErrore"></span>
             </p>
 
             <p>
                 <label for="provincia">Provincia (sigla):</label>
-                <input type="text" id="provincia" name="provincia" maxlength="2"/>
+                <input type="text" id="provincia" name="provincia" maxlength="2" onchange="validaProvincia()"/> 
+                <span id="erroreProvincia" class="messaggioErrore"></span>
             </p>
         </fieldset>
 
         <fieldset>
             <legend>Pagamento</legend>
 
-            <p>   <!-- menu a tendina per il metodo di pagamento -->
-            
+            <p>
                 <label for="metodoPagamento">Metodo di pagamento:</label>
                 <select id="metodoPagamento" name="metodoPagamento" required="required">
                     <option value="carta">Carta di credito</option>
@@ -82,6 +85,10 @@
     </form>
 
     <p><a href="CarrelloServlet">Torna al carrello</a></p>
+
+    <!--alla fine scrpt di validazione -->
+    
+    <script src="scripts/validazioneCheckout.js"></script>
 
 </body>
 </html>
