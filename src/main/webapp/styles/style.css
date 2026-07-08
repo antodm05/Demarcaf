@@ -1,5 +1,5 @@
 
-body {
+body {  /* stile generale */
   
     font-family: Arial, Helvetica, sans-serif;
     color: #2E2E2E;                              /*  testo grigio scuro */
@@ -51,3 +51,96 @@ body > nav + * {
     margin-left: 20px;
     margin-right: 20px;
 }
+
+/*form , tab e bottoni */
+
+fieldset {
+    border: 1px solid #6F4E37;   /* marrone */
+    border-radius: 6px;           /* arrotondo */
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #FFFFFF;    /* bianco */
+}
+
+legend {
+    color: #6F4E37;    /* sempre marrone */
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+
+label {
+    display: inline-block;  /* stessa linea */
+    width: 180px;          
+    font-weight: bold;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+    padding: 6px;
+    border: 1px solid #CCCCCC;  /* bordo grigio */
+    border-radius: 4px;                         /* arrotondo */
+    font-size: 14px;
+}
+
+
+input[type="submit"] {
+    background-color: #6F4E37;   /* marrone */
+    color: #FFFFFF;              /* testo bianco */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;            /*mostro la mano */
+}
+
+input[type="submit"]:hover {
+    background-color: #3E2723;   /* piu' scuro al passaggio */
+}
+
+/* La classe per js */
+.error {
+    border: 2px solid #C62828;   /* bordo rosso */
+    background-color: #FFEBEE;                   /*  rosa chiaro */
+}
+
+
+.messaggioErrore {
+    color: #C62828;    /* testo rosso */
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+
+table {
+    border-collapse: collapse;   /* linea singola + moderna */
+    width: 90%;
+    margin: 20px;
+    background-color: #FFFFFF;
+}
+
+th {
+    background-color: #6F4E37;   /*  marrone */
+    color: #FFFFFF;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #DDDDDD;   /* linea sottile per separare */
+}
+
+/* Righe alternate in pos pari  */
+tr:nth-child(even) {
+    background-color: #F9F6F0;
+}
+
+
+
