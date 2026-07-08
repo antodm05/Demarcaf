@@ -57,7 +57,7 @@ public class MieiOrdiniServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("index.html?errore=ordini");
+            response.sendRedirect("index.jsp?errore=ordini");
         }
     }
 }

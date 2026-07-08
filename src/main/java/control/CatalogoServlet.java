@@ -41,7 +41,7 @@ public class CatalogoServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace(); // errore db cosa è andato storto 
-            response.sendRedirect("index.html?errore=catalogo");
+            response.sendRedirect("index.jsp?errore=catalogo");
         }
     }
 }

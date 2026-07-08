@@ -38,7 +38,7 @@ public class AdminProdottiServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("index.html?errore=adminProdotti");
+            response.sendRedirect("index.jsp?errore=adminProdotti");
         }
     }
 }

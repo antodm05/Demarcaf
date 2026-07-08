@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         UtenteDao utenteDao = new UtenteDaoImpl(connessioneDB);
 
         try {
-        	//CERCO EMAIL
+        	//cerco email
             UtenteBean utente = utenteDao.doRetrieveByEmail(email);
 
             // cifro la password
@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
                 sessione.setAttribute("ruolo", utente.getRuolo());
 
                 // Reindirizzo 
-                response.sendRedirect("index.html");
+                response.sendRedirect("index.jsp");
 
             } else {
                 response.sendRedirect("login.html?errore=credenzialiErrate");

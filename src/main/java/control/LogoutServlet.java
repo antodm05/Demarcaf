@@ -23,6 +23,6 @@ public class LogoutServlet extends HttpServlet {
             sessione.invalidate();
         }
 
-        response.sendRedirect("index.html");
+        response.sendRedirect("index.jsp");
     }
 }

@@ -64,7 +64,7 @@ public class AdminOrdiniServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("index.html?errore=adminOrdini");
+            response.sendRedirect("index.jsp?errore=adminOrdini");
         }
     }
 }
