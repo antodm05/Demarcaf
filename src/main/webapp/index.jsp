@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>DEMARCAF - Torrefazione e Assistenza</title>
+    <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
 
