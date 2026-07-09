@@ -24,7 +24,7 @@ public class CheckoutServlet extends HttpServlet {
         // Recupero la sessione 
         HttpSession sessione = request.getSession(false);
 
-        // 1. Controllo che l'utente sia loggato else va al login
+        // Controllo che l'utente sia loggato 
         UtenteBean utente = null;
         if (sessione != null) {
             utente = (UtenteBean) sessione.getAttribute("utenteLoggato");
@@ -34,14 +34,14 @@ public class CheckoutServlet extends HttpServlet {
             return; 
         }
 
-        // Controllo che il carrello non sia vuoto
+        // recup carrello sempre da sessione 
         Carrello carrello = (Carrello) sessione.getAttribute("carrello");
         if (carrello == null || carrello.getArticoli().isEmpty()) {
             response.sendRedirect("CarrelloServlet?errore=carrelloVuoto");
             return; 
         }
 
-        //  mostro il form di spedizione la JSP puo' leggerlo da li'
+       
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/checkout.jsp");
         dispatcher.forward(request, response);

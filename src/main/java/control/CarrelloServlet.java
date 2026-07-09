@@ -20,7 +20,7 @@ public class CarrelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Recupero la sessione che sicuro ci dovrebbe essere , se non c e carello non ce sessione
+        
         HttpSession sessione = request.getSession(false);
 
         // Prendo il carrello dalla sessione
@@ -29,7 +29,7 @@ public class CarrelloServlet extends HttpServlet {
             carrello = (Carrello) sessione.getAttribute("carrello");
         }
 
-        // Metto il carrello nella request per la JSP che nel caso è vuoto lo mostra vuoto 
+        // Metto il carrello nella request  
    
         request.setAttribute("carrello", carrello);
 

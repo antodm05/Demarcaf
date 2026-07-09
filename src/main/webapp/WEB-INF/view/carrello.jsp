@@ -12,10 +12,10 @@
 
     <h1>Il tuo carrello</h1>
 
-           <!--  carrello vuoto o inesistente -->
-            <!--  blocco di scelta -->
-            <!-- carrello non vuoto -->
-<!-- righe -->
+          
+           
+        
+
  <!-- per ogni prodotto , nome , prezzo , quantita e subtotale -->
    
     <c:choose>        
@@ -59,7 +59,7 @@
                 </tbody>
             </table>
 
-            <!-- Totale del carrello -->
+           
             
             <h3>Totale: &euro; <c:out value="${carrello.totale}"/></h3>
 

@@ -10,7 +10,7 @@
 
     <h1>Registrati</h1>
 
-    <!--  valida TUTTO all'invio. con il metodo creato nella classe validazioneregistrazione se return false non parte il form  -->
+    <!--  valida tutto all'invio  -->
     <form action="RegistrazioneServlet" method="post" onsubmit="return validaForm()">
 
         <fieldset>
@@ -20,7 +20,7 @@
                 <label for="nome">Nome:</label>
                 <!-- valida appena esco dal campo -->
                 <input type="text" id="nome" name="nome" onchange="validaNome()"/>
-                <!-- span messaggio di errore se capita -->
+                <!-- span mes di errore -->
                 <span id="erroreNome" class="messaggioErrore"></span>
             </p>
 
@@ -49,7 +49,7 @@
 
     </form>
 
-    <!-- Alla fine Collego il file JavaScript esterno -->
+    <!--  js  -->
     <script src="scripts/validazioneRegistrazione.js"></script>
 
 </body>

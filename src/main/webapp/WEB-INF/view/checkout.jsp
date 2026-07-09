@@ -34,7 +34,7 @@
     </table>
     <h3>Totale: &euro; <c:out value="${carrello.totale}"/></h3>
 
-    <!-- form dati di spedizione con validazione JS  -->
+    <!--  dati di spedizione + JS  -->
     
     <h2>Dati di spedizione</h2>
     <form action="ConfermaOrdineServlet" method="post" onsubmit="return validaFormCheckout()">

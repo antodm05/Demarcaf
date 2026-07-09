@@ -2,23 +2,23 @@ package model;
 
 import java.io.Serializable;
 
-//  prodotto + quanti pezzi ne voglio.
+
 //  verra messo in sessione.
 public class ArticoloCarrello implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    // Il prodotto scelto (riuso il ProdottoBean che ho gia')
+    
     private ProdottoBean prodotto;
 
-    // Quanti pezzi di questo prodotto l'utente vuole
+    
     private int quantita;
 
     // Costruttore vuoto
     public ArticoloCarrello() {
     }
 
-    // crea l'articolo passando subito prodotto e quantita
+   
     public ArticoloCarrello(ProdottoBean prodotto, int quantita) {
         this.prodotto = prodotto;
         this.quantita = quantita;
@@ -40,7 +40,7 @@ public class ArticoloCarrello implements Serializable {
         this.quantita = quantita;
     }
 
-    //  calcola il costo di questa riga per mostrare il totale parziale.
+    //   totale parziale.
     public double getSubtotale() {
         return prodotto.getPrezzo() * quantita;
     }

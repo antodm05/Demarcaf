@@ -12,11 +12,11 @@
 
     <h1>Il nostro catalogo</h1>
 
-    <!-- Link al carrello -->
+  
     
     <p><a href="CarrelloServlet">Vai al carrello</a></p>
 
-    <!-- Ciclo su tutti i prodotti attivi -->
+    <!--  prodotti attivi -->
     <c:forEach var="prodotto" items="${listaProdotti}">
 
     <div class="catalogo-prodotto">
@@ -31,7 +31,7 @@
                 <img src="images/${prodotto.immagine}" alt="${prodotto.nome}" width="150"/>
             </c:if>
 
-            <!-- Form per aggiungere questo prodotto al carrello -->
+            
             
             <form action="AggiungiCarrelloServlet" method="post">
             
@@ -39,7 +39,7 @@
                 
                 <input type="hidden" name="idProdotto" value="${prodotto.idProdotto}"/>
 
-                <!-- Quantita' da aggiungere  -->
+                
                 
                 <label for="qta${prodotto.idProdotto}">Quantita':</label>
                 <input type="number" id="qta${prodotto.idProdotto}" name="quantita"

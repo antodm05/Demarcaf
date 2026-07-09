@@ -29,14 +29,14 @@ public class AggiungiCarrelloServlet extends HttpServlet {
         int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
         int quantita = Integer.parseInt(request.getParameter("quantita"));
 
-        // Recupero il prodotto completo dal database
+        // Recupero il prodotto
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
 
         try {
             ProdottoBean prodotto = prodottoDao.doRetrieveById(idProdotto);
 
-            // Recupero la sessione , se poi non esiste la creo
+            // Recupero la sessione 
             HttpSession sessione = request.getSession();
 
             //  Prendo il carrello dalla sessione

@@ -27,7 +27,7 @@ public class RegistrazioneServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // Recupero il DataSource poool e creo il DAO 
+        // Recupero il DataSource poool e DAO 
         DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
         UtenteDao utenteDao = new UtenteDaoImpl(ds);
 
@@ -41,7 +41,7 @@ public class RegistrazioneServlet extends HttpServlet {
                 return; 
             }
 
-            // creo il bean e lo riempio con i dati del form
+            // riempio con i dati del form
             UtenteBean nuovoUtente = new UtenteBean();
             nuovoUtente.setNome(nome);
             nuovoUtente.setCognome(cognome);
@@ -51,7 +51,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
             utenteDao.doSave(nuovoUtente);
 
-            // Uso sendRedirect per inviare l utente al login 
+             
             response.sendRedirect("login.html?registrazione=ok");
 
         } catch (SQLException e) {

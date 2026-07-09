@@ -26,10 +26,10 @@ public class ConfermaOrdineServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Recupero la sessione 
+         
         HttpSession sessione = request.getSession(false);
 
-        // controllo utente loggato e carrello valido
+        // controllo utente e carrello 
         UtenteBean utente = null;
         Carrello carrello = null;
         if (sessione != null) {
@@ -45,7 +45,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
             return;
         }
 
-        // Leggo i dati di spedizione dal form
+        
         String indirizzo = request.getParameter("indirizzo");
         String citta = request.getParameter("citta");
         String cap = request.getParameter("cap");
@@ -67,13 +67,13 @@ public class ConfermaOrdineServlet extends HttpServlet {
         OrdineDao ordineDao = new OrdineDaoImpl(connessioneDB);
 
         try {
-            // il DAO salvera tutto
+            
             ordineDao.doSave(ordine, carrello.getArticoli());
 
-            //  Ordine salvato: svuoto il carrello 
+             
             carrello.svuota();
 
-            // Mando l'utente a una pagina di conferma
+      
             response.sendRedirect("ordineConfermato.html");
 
         } catch (SQLException e) {
