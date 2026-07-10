@@ -41,7 +41,7 @@ public class AuthFilter implements Filter {
 
             //  lo mando al login SE è DIVERSO DA ADMIN
             if (ruolo == null || !ruolo.equals("admin")) {
-                res.sendRedirect(req.getContextPath() + "/login.html?errore=nonAutorizzato");
+                res.sendRedirect(req.getContextPath() + "/login.jsp?errore=nonAutorizzato");
                 return; // fermo qui: non lascio passare la richiesta
             }
         }

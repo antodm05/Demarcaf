@@ -219,5 +219,40 @@ img {
     height: auto;      
 }
 
+/* info contatti */
+.footer-sito {
+    background-color: #3E2723;   /* marrone scuro*/
+    color: #F5F0E6;              /*  crema */
+    margin-top: 40px;            
+    padding: 30px 20px 15px 20px;
+}
+
+
+.footer-contenuto {
+    display: flex;
+    justify-content: space-around;   /* distribuzuione uniforme */
+    flex-wrap: wrap;                 /* vanno a capo su schermo piccolo */
+    gap: 20px;
+}
+
+.footer-colonna h4 {
+    color: #F5F0E6;   /*  crema */
+    margin-bottom: 10px;
+}
+
+.footer-colonna p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer-copyright {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #6F4E37;   /* linea */
+    font-size: 13px;
+}
+
 
 

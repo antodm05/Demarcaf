@@ -37,7 +37,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
             carrello = (Carrello) sessione.getAttribute("carrello");
         }
         if (utente == null) {
-            response.sendRedirect("login.html?errore=devLoggarti");
+            response.sendRedirect("login.jsp?errore=devLoggarti");
             return;
         }
         if (carrello == null || carrello.getArticoli().isEmpty()) {
@@ -74,7 +74,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
             carrello.svuota();
 
       
-            response.sendRedirect("ordineConfermato.html");
+            response.sendRedirect("ordineConfermato.jsp");
 
         } catch (SQLException e) {
             e.printStackTrace();

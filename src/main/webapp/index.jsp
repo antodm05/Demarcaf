@@ -26,8 +26,8 @@
             <c:choose>
                
                 <c:when test="${empty sessionScope.utenteLoggato}">
-                    <li><a href="login.html">Accedi</a></li>
-                    <li><a href="registrazione.html">Registrati</a></li>
+                    <li><a href="login.jsp">Accedi</a></li>
+                    <li><a href="registrazione.jsp">Registrati</a></li>
                 </c:when>
 
              
@@ -59,6 +59,7 @@
     <c:if test="${not empty sessionScope.utenteLoggato}">
         <p>Ciao, <c:out value="${sessionScope.utenteLoggato.nome}"/>!</p>
     </c:if>
-
+    
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 </body>
 </html>

@@ -71,6 +71,7 @@
 
         </c:otherwise>
     </c:choose>
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>
 </html>

@@ -69,6 +69,7 @@
     </form>
 
     <p><a href="AdminProdottiServlet">Torna all'elenco prodotti</a></p>
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>
 </html>

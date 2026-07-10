@@ -36,7 +36,7 @@ public class MieiOrdiniServlet extends HttpServlet {
             utente = (UtenteBean) sessione.getAttribute("utenteLoggato"); //recupero utente dalla sessione
         }
         if (utente == null) {
-            response.sendRedirect("login.html?errore=devLoggarti");
+            response.sendRedirect("login.jsp?errore=devLoggarti");
             return;
         }
 

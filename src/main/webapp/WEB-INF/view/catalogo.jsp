@@ -52,6 +52,7 @@
 
 
     </c:forEach>
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>
 </html>

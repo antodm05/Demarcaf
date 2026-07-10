@@ -47,12 +47,12 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("index.jsp");
 
             } else {
-                response.sendRedirect("login.html?errore=credenzialiErrate");
+                response.sendRedirect("login.jsp?errore=credenzialiErrate");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("login.html?errore=database");
+            response.sendRedirect("login.jsp?errore=database");
         }
     }
 }

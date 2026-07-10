@@ -30,7 +30,7 @@ public class CheckoutServlet extends HttpServlet {
             utente = (UtenteBean) sessione.getAttribute("utenteLoggato");
         }
         if (utente == null) {
-            response.sendRedirect("login.html?errore=devLoggarti");
+            response.sendRedirect("login.jsp?errore=devLoggarti");
             return; 
         }
 

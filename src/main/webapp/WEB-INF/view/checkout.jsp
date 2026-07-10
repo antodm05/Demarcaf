@@ -103,6 +103,7 @@
     <script src="scripts/validazioneCheckout.js"></script>
         <script src="scripts/ajaxComuni.js"></script>
     
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>
 </html>

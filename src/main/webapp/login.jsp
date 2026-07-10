@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html>
 <head>
@@ -32,7 +33,8 @@
 
     </form>
 
-    <p>Non hai un account? <a href="registrazione.html">Registrati</a></p>
-
+    <p>Non hai un account? <a href="registrazione.jsp">Registrati</a></p>
+    
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 </body>
 </html>

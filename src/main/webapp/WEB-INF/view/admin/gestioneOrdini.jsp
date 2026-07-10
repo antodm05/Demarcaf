@@ -82,6 +82,7 @@
     </c:choose>
 
     <p><a href="AdminProdottiServlet">Gestione prodotti</a> | <a href="index.jsp">Home</a></p>
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>
 </html>

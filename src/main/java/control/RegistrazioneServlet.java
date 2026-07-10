@@ -37,7 +37,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
             if (esistente != null) {
                 // Email gia' usata
-                response.sendRedirect("registrazione.html?errore=emailEsistente");
+                response.sendRedirect("registrazione.jsp?errore=emailEsistente");
                 return; 
             }
 
@@ -52,11 +52,11 @@ public class RegistrazioneServlet extends HttpServlet {
             utenteDao.doSave(nuovoUtente);
 
              
-            response.sendRedirect("login.html?registrazione=ok");
+            response.sendRedirect("login.jsp?registrazione=ok");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("registrazione.html?errore=database");
+            response.sendRedirect("registrazione.jsp?errore=database");
         }
     }
 }

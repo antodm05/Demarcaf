@@ -50,6 +50,7 @@
     </c:choose>
 
     <p><a href="index.jsp">Torna alla home</a></p>
+<jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>
 </html>
