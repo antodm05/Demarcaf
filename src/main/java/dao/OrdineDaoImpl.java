@@ -70,15 +70,29 @@ public class OrdineDaoImpl implements OrdineDao {
                 psDettaglio.setInt(2, articolo.getProdotto().getIdProdotto());
                 psDettaglio.setInt(3, articolo.getQuantita());
                 
-                // copio il prezzo ATTUALE del prodotto  Cosi se il prezzo cambiera l'ordine mantiene questo 
+                // copio il prezzo attuale 
                 
                 psDettaglio.setDouble(4, articolo.getProdotto().getPrezzo());
                 psDettaglio.addBatch(); // accumulo le righe cosi le eseguo tutte insieme 
             }
             psDettaglio.executeBatch(); // eseguo tutte le righe insieme
             psDettaglio.close();
+            
+         // scalo la quantita 
+            String sqlScarico = "UPDATE prodotto SET quantita = quantita - ? WHERE id_prodotto = ?";
+            PreparedStatement psScarico = conn.prepareStatement(sqlScarico);
 
-            // TUTTO OK: confermo la transazione (salva davvero tutto)
+            for (ArticoloCarrello articolo : articoli) {
+                
+                psScarico.setInt(1, articolo.getQuantita());
+                psScarico.setInt(2, articolo.getProdotto().getIdProdotto());
+                psScarico.addBatch();
+            }
+            psScarico.executeBatch();
+            psScarico.close();
+            
+            
+            // confermo la transazione 
             conn.commit();
 
         } catch (SQLException e) {
@@ -89,7 +103,7 @@ public class OrdineDaoImpl implements OrdineDao {
             throw e; // rilancio l'errore 
 
         } finally {
-            // di base  Riporto la connessione allo stato normale e la chiudo
+            // conn normale e la chiudo
             if (conn != null) {
                 conn.setAutoCommit(true);
                 conn.close();
