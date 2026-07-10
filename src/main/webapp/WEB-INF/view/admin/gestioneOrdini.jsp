@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/includes/header.jsp"/>
 
     <h1>Gestione Ordini</h1>
 
@@ -81,7 +82,6 @@
         </c:otherwise>
     </c:choose>
 
-    <p><a href="AdminProdottiServlet">Gestione prodotti</a> | <a href="index.jsp">Home</a></p>
 <jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>

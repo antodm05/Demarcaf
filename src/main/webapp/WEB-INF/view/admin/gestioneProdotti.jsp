@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/includes/header.jsp"/>
 
     <h1>Gestione Prodotti</h1>
 
@@ -50,7 +51,6 @@
         </tbody>
     </table>
 
-    <p><a href="index.jsp">Torna alla home</a></p>
 <jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>

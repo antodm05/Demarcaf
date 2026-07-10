@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/includes/header.jsp"/>
 
     <h1>Il tuo carrello</h1>
 

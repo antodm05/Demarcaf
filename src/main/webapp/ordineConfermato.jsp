@@ -7,6 +7,8 @@
     <title>Ordine confermato - DEMARCAF</title>
     <link rel="stylesheet" href="styles/style.css"/>
 </head>
+<jsp:include page="/WEB-INF/view/includes/header.jsp"/>
+
 <body>
     <h1>Grazie per il tuo ordine!</h1>
     <p>Il tuo ordine e' stato registrato con successo.</p>

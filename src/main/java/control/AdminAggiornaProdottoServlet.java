@@ -42,14 +42,14 @@ public class AdminAggiornaProdottoServlet extends HttpServlet {
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
 
         try {
-            // Carico il prodotto attuale, per recuperare la vecchia immagine
+            // Carico il prodotto attuale
             ProdottoBean prodotto = prodottoDao.doRetrieveById(idProdotto);
 
-            //  Gestisco l'immagine: se ne carico una nuova la sostituisco, altrimenti tengo quella vecchia
+            //  Gestisco l'immagine
             
             Part partImmagine = request.getPart("immagine");
             if (partImmagine != null && partImmagine.getSize() > 0) {
-                // C'e' una nuova immagine: la salvo con nome univoco
+                // la salvo con nome univoco
                 String nomeOriginale = partImmagine.getSubmittedFileName();
                 String estensione = nomeOriginale.substring(nomeOriginale.lastIndexOf("."));
                 String nomeFileImmagine = UUID.randomUUID().toString() + estensione;
@@ -62,16 +62,15 @@ public class AdminAggiornaProdottoServlet extends HttpServlet {
                 // Aggiorno il bean con la nuova immagine
                 prodotto.setImmagine(nomeFileImmagine);
             }
-            // Se non c'e' nuova immagine, il bean tiene gia' quella vecchia (dal doRetrieveById)
 
-            // Aggiorno gli altri campi con i dati del form
+            // Aggiorno campi
             prodotto.setNome(nome);
             prodotto.setDescrizione(descrizione);
             prodotto.setPrezzo(prezzo);
             prodotto.setQuantita(quantita);
             prodotto.setIdCategoria(idCategoria);
 
-            // Salvo le modifiche nel database
+            // Salvo nel db
             prodottoDao.doUpdate(prodotto);
             response.sendRedirect("AdminProdottiServlet?successo=modificato");
 

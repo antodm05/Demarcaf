@@ -14,30 +14,45 @@ h1, h2, h3 {
 }
 
 
-nav {
-    background-color: #3E2723;     /* barra marrone scuro  */
-    padding: 10px 20px;               
+
+
+/* menu uguale per ogni pagina  */
+.header-sito {
+    background-color: #3E2723;   /* marrone scuro */
+    display: flex;
+    justify-content: space-between;   /* logo a sinistra, menu a destra */
+    align-items: center;
+    padding: 10px 20px;
+    flex-wrap: wrap;
 }
 
-/* La lista menu */
-nav ul {
-    list-style: none;   
+/* Il logo DEMARCAF */
+.logo a {
+    color: #F5F0E6;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+/* Il menu */
+.header-sito nav ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;             /* el in fila orizzontale */
-    gap: 20px;         
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-
-nav ul li a {
-    color: #F5F0E6;             /* color crema */
-    text-decoration: none;      
+.header-sito nav ul li a {
+    color: #F5F0E6;
+    text-decoration: none;
     font-weight: bold;
 }
 
-
-nav ul li a:hover {
-    color: #D7CCC8;               /* schiarisco */
+.header-sito nav ul li a:hover {
+    color: #D7CCC8;
 }
 
 
