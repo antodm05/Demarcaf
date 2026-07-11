@@ -41,11 +41,19 @@
                         <c:if test="${prodotto.attivo}">Attivo</c:if>
                         <c:if test="${not prodotto.attivo}">Disattivato</c:if>
                     </td>
-                    <td>
-                        <!-- per modificare ed eliminare -->
-                        <a href="AdminModificaProdottoServlet?id=${prodotto.idProdotto}">Modifica</a>
-                        <a href="AdminEliminaProdottoServlet?id=${prodotto.idProdotto}">Elimina</a>
-                    </td>
+                    
+                   <td>
+    <a href="AdminModificaProdottoServlet?id=${prodotto.idProdotto}">Modifica</a>
+
+    <c:choose>
+        <c:when test="${prodotto.attivo}">
+            <a href="AdminEliminaProdottoServlet?id=${prodotto.idProdotto}">Disattiva</a>
+        </c:when>
+        <c:otherwise>
+            <a href="AdminRiattivaProdottoServlet?id=${prodotto.idProdotto}">Riattiva</a>
+        </c:otherwise>
+    </c:choose>
+</td>
                 </tr>
             </c:forEach>
         </tbody>

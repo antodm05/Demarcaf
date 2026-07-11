@@ -10,8 +10,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import model.ArticoloCarrello;
 import model.OrdineBean;
+import model.ArticoloCarrello;
+import model.DettaglioOrdineBean;
 
 public class OrdineDaoImpl implements OrdineDao {
 
@@ -70,7 +71,7 @@ public class OrdineDaoImpl implements OrdineDao {
                 psDettaglio.setInt(2, articolo.getProdotto().getIdProdotto());
                 psDettaglio.setInt(3, articolo.getQuantita());
                 
-                // copio il prezzo attuale 
+                // copio il prezzo  
                 
                 psDettaglio.setDouble(4, articolo.getProdotto().getPrezzo());
                 psDettaglio.addBatch(); // accumulo le righe cosi le eseguo tutte insieme 
@@ -249,6 +250,40 @@ public class OrdineDaoImpl implements OrdineDao {
         ordine.setIdUtente(rs.getInt("id_utente"));
         ordine.setEmailCliente(rs.getString("email_cliente"));
         return ordine;
+    }
+    
+    
+    //-------------------------------------
+    
+    @Override
+    public List<DettaglioOrdineBean> doRetrieveDettagli(int idOrdine) throws SQLException {
+
+        List<DettaglioOrdineBean> listaDettagli = new ArrayList<DettaglioOrdineBean>();
+
+        // + dettagli 
+        String sql = "SELECT dettaglio_ordine.*, prodotto.nome AS nome_prodotto "
+                   + "FROM dettaglio_ordine "
+                   + "JOIN prodotto ON dettaglio_ordine.id_prodotto = prodotto.id_prodotto "
+                   + "WHERE dettaglio_ordine.id_ordine = ?";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idOrdine);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    DettaglioOrdineBean dettaglio = new DettaglioOrdineBean();
+                    dettaglio.setIdOrdine(rs.getInt("id_ordine"));
+                    dettaglio.setIdProdotto(rs.getInt("id_prodotto"));
+                    dettaglio.setQuantita(rs.getInt("quantita"));
+                    dettaglio.setPrezzoUnitario(rs.getDouble("prezzo_unitario"));
+                    dettaglio.setNomeProdotto(rs.getString("nome_prodotto"));
+                    listaDettagli.add(dettaglio);
+                }
+            }
+        }
+        return listaDettagli;
     }
    
     

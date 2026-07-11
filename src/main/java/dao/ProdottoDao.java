@@ -28,4 +28,7 @@ public interface ProdottoDao
  // Aggiorna un prodotto esistente nel database
     void doUpdate(ProdottoBean prodotto) throws SQLException;
     
+ // Riattiva un prodotto disattivato (rimette attivo = true)
+    void doRiattiva(int idProdotto) throws SQLException;
+    
 }

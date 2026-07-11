@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>I miei ordini - DEMARCAF</title>
     <link rel="stylesheet" href="styles/style.css"/>
+    
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/includes/header.jsp"/>
@@ -28,19 +29,26 @@
                         <th>Totale</th>
                         <th>Stato</th>
                         <th>Spedizione</th>
+                        <th>Dettagli</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="ordine" items="${listaOrdini}">
                         <tr>
+                        
                             <td><c:out value="${ordine.idOrdine}"/></td>
                             <td><c:out value="${ordine.data}"/></td>
                             <td>&euro; <c:out value="${ordine.totale}"/></td>
                             <td><c:out value="${ordine.stato}"/></td>
                             <td>
-                                <c:out value="${ordine.indirizzo}"/>,
+      
                                 <c:out value="${ordine.citta}"/>
-                                (<c:out value="${ordine.provincia}"/>)
+                                <c:out value="${ordine.indirizzo}"/> 
+                                <c:out value="${ordine.provincia}"/>
+                            </td>
+                            <td>                         
+                            <a href="DettaglioOrdineServlet?idOrdine=${ordine.idOrdine}">Vedi dettagli</a>
                             </td>
                         </tr>
                     </c:forEach>

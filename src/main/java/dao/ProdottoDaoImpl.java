@@ -183,4 +183,18 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
     
     
+    //-------------------------------------------------------------
+    @Override
+    public void doRiattiva(int idProdotto) throws SQLException {
+
+        String sql = "UPDATE prodotto SET attivo = true WHERE id_prodotto = ?";
+
+        try (Connection conn = connessioneDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idProdotto);
+            ps.executeUpdate();
+        }
+    }
+    
 }

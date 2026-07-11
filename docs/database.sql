@@ -103,3 +103,9 @@ UPDATE utente SET ruolo = 'admin' WHERE email = 'admin@demarcaf.it';
 
 
 SELECT * FROM dettaglio_ordine;
+
+
+SELECT * FROM dettaglio_ordine;
+
+USE demarcaf;
+SELECT id_prodotto, nome, quantita FROM prodotto;

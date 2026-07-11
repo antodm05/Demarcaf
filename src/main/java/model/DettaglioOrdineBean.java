@@ -8,7 +8,8 @@ public class DettaglioOrdineBean implements Serializable {
     private int idProdotto;
     private int quantita;
     private double prezzoUnitario;
-
+    private String nomeProdotto;
+    
     public DettaglioOrdineBean() 
     {
 
@@ -44,6 +45,14 @@ public class DettaglioOrdineBean implements Serializable {
 
 	public void setPrezzoUnitario(double prezzoUnitario) {
 		this.prezzoUnitario = prezzoUnitario;
+	}
+
+	public String getNomeProdotto() {
+		return nomeProdotto;
+	}
+
+	public void setNomeProdotto(String nomeProdotto) {
+		this.nomeProdotto = nomeProdotto;
 	}
 
     
