@@ -6,7 +6,6 @@ import model.CategoriaBean;
 
 public interface CategoriaDao {
 
-    // Restituisce tutte le categorie 
 
     List<CategoriaBean> doRetrieveAll() throws SQLException;
 

@@ -90,6 +90,15 @@
                 </select>
             </p>
         </fieldset>
+        
+        <fieldset>
+            <legend>Note (facoltative)</legend>
+            <p>
+                <label for="note">Note per l'ordine:</label><br/>
+                <textarea id="note" name="note" rows="3" cols="40"
+                          placeholder="Esempio per l'assistenza: giorno e ora preferiti per l'intervento , poi la contattiamo via email per confermare"></textarea>
+            </p>
+        </fieldset>
 
         <p>
             <input type="submit" value="Conferma ordine"/>

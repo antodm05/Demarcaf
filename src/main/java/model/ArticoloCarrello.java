@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 
 
-//  verra messo in sessione.
 public class ArticoloCarrello implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -14,7 +13,6 @@ public class ArticoloCarrello implements Serializable {
     
     private int quantita;
 
-    // Costruttore vuoto
     public ArticoloCarrello() {
     }
 
@@ -40,7 +38,6 @@ public class ArticoloCarrello implements Serializable {
         this.quantita = quantita;
     }
 
-    //   totale parziale.
     public double getSubtotale() {
         return prodotto.getPrezzo() * quantita;
     }

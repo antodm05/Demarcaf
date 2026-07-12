@@ -63,7 +63,9 @@
                         <th>Cliente</th>
                         <th>Totale</th>
                         <th>Stato</th>
-                        <th>Citta'</th>
+                        <th>Citta'</th>                                              
+                          <th>Note</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -75,6 +77,8 @@
                             <td>&euro; <c:out value="${ordine.totale}"/></td>
                             <td><c:out value="${ordine.stato}"/></td>
                             <td><c:out value="${ordine.citta}"/></td>
+                            <td><c:out value="${ordine.note}"/></td>
+                            
                         </tr>
                     </c:forEach>
                 </tbody>

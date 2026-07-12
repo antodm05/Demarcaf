@@ -8,7 +8,10 @@ import javax.sql.DataSource;
 
 import dao.ProdottoDao;
 import dao.ProdottoDaoImpl;
+import dao.CategoriaDao;
+import dao.CategoriaDaoImpl;
 import model.ProdottoBean;
+import model.CategoriaBean;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,23 +27,24 @@ public class CatalogoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 1. Recupero il DataSource e creo il DAO dei prodotti
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
+        CategoriaDao categoriaDao = new CategoriaDaoImpl(connessioneDB);
 
         try {
-            //  Chiedo la lista di tutti i prodotti attivi NEL DAO
-            List<ProdottoBean> listaProdotti = prodottoDao.doRetrieveAllActive();
 
-            //  la JSP potra' leggerla
+        	List<ProdottoBean> listaProdotti = prodottoDao.doRetrieveAllActive();
+
+            List<CategoriaBean> listaCategorie = categoriaDao.doRetrieveAll();
+
             request.setAttribute("listaProdotti", listaProdotti);
+            request.setAttribute("listaCategorie", listaCategorie);
 
-            //chiamo la JSP che mostrera i prodotti forward 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/catalogo.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException e) {
-            e.printStackTrace(); // errore db cosa è andato storto 
+            e.printStackTrace(); 
             response.sendRedirect("index.jsp?errore=catalogo");
         }
     }

@@ -36,8 +36,8 @@ public class OrdineDaoImpl implements OrdineDao {
 
             // salvo l'ordine principale con NOW per prendere la data 
             String sqlOrdine = "INSERT INTO ordine (data, totale, indirizzo, citta, cap, "
-                    + "provincia, metodo_pagamento, stato, id_utente) "
-                    + "VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + "provincia, metodo_pagamento, stato, id_utente, note) "
+                    + "VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             // Statement.RETURN_GENERATED_KEYS: mi faccio restituire l'id per poter identificare l'ordine e collegarci le righe gli sto chiedendo di ricordarlo
             PreparedStatement psOrdine = conn.prepareStatement(sqlOrdine, Statement.RETURN_GENERATED_KEYS);
@@ -49,6 +49,7 @@ public class OrdineDaoImpl implements OrdineDao {
             psOrdine.setString(6, ordine.getMetodoPagamento());
             psOrdine.setString(7, "in elaborazione"); // per lo stato
             psOrdine.setInt(8, ordine.getIdUtente());
+            psOrdine.setString(9, ordine.getNote());
             psOrdine.executeUpdate();
 
             // Recupero l'id dell'ordine appena creato 
@@ -143,6 +144,7 @@ public class OrdineDaoImpl implements OrdineDao {
                     ordine.setMetodoPagamento(rs.getString("metodo_pagamento"));
                     ordine.setStato(rs.getString("stato"));
                     ordine.setIdUtente(rs.getInt("id_utente"));
+                    ordine.setNote(rs.getString("note"));
                     listaOrdini.add(ordine);
                 }
             }
@@ -249,6 +251,7 @@ public class OrdineDaoImpl implements OrdineDao {
         ordine.setStato(rs.getString("stato"));
         ordine.setIdUtente(rs.getInt("id_utente"));
         ordine.setEmailCliente(rs.getString("email_cliente"));
+        ordine.setNote(rs.getString("note"));
         return ordine;
     }
     

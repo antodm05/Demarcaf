@@ -51,6 +51,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
         String cap = request.getParameter("cap");
         String provincia = request.getParameter("provincia");
         String metodoPagamento = request.getParameter("metodoPagamento");
+        String note = request.getParameter("note");
 
         //  Costruisco l'oggetto ordine con tutti i dati
         OrdineBean ordine = new OrdineBean();
@@ -61,7 +62,8 @@ public class ConfermaOrdineServlet extends HttpServlet {
         ordine.setCap(cap);
         ordine.setProvincia(provincia);
         ordine.setMetodoPagamento(metodoPagamento);
-
+        ordine.setNote(note);
+        
         //Salvo l'ordine nel database del dao
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         OrdineDao ordineDao = new OrdineDaoImpl(connessioneDB);

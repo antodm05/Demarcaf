@@ -399,4 +399,11 @@ img {
     font-size: 20px;
 }
 
+.titolo-categoria {
+    color: #3E2723;
+    border-bottom: 2px solid #6F4E37;
+    padding-bottom: 6px;
+    margin: 30px 20px 15px 20px;
+}
+
 
