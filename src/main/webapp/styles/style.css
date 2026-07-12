@@ -166,13 +166,13 @@ tr:nth-child(even) {
 
     
     nav ul {
-        flex-direction: column;   /* da riga a colonna */
+        flex-direction: column;   
         gap: 10px;
     }
 
-    /* Le etichette dei form vanno sopra i campi */
+   
     label {
-        display: block;    /*  occupa tutta la riga andando  a capo */
+        display: block;    
         width: auto;       
         margin-bottom: 5px;
     }
@@ -189,7 +189,7 @@ tr:nth-child(even) {
         width: 90%;
     }
 
-    /* anche per le tab */
+   
     table {
         width: 100%;
         margin: 10px 0;
@@ -319,5 +319,84 @@ img {
     background-color: #8E1F1F;
 }
 
+
+.hero {
+   
+    /* metto un velo scuro semi trasparente con il colore marrone per migliorare la leggibilita */
+    
+       background-image: linear-gradient(rgba(62, 39, 35, 0.5), rgba(62, 39, 35, 0.5)), url("../images/sfondo-home.jpeg");  
+       background-size: cover;  
+       background-position: center;   
+       height: 400px;                
+    display: flex;
+    align-items: center;            /* centra il testo verticalmente */
+    justify-content: center;        /*  orizzontalmente */
+    text-align: center;
+}
+
+
+
+.contenuto-con-lati {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+
+.foto-lato {
+    margin: 0;
+    text-align: center;
+}
+
+
+.foto-lato img {
+    width: 220px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #6F4E37;
+}
+
+.colonna-centrale {
+    flex: 1;
+    max-width: 700px;
+    text-align: center;
+}
+
+.colonna-centrale h2 { color: #3E2723; }
+.colonna-centrale p  { color: #6F4E37; line-height: 1.6; }
+
+.foto-sotto {
+    text-align: center;
+    margin: 20px auto 50px auto;
+}
+
+.foto-sotto figure {
+    margin: 0;
+    display: inline-block;   
+}
+
+.foto-sotto img {
+    width: 450px;
+    max-width: 90%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #6F4E37;
+}
+
+
+.foto-lato figcaption,
+.foto-sotto figcaption {
+    margin-top: 8px;
+    color: #6F4E37;
+    font-style: italic;
+    font-size: 20px;
+}
 
 
