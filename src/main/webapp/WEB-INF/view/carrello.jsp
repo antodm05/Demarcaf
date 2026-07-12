@@ -17,13 +17,12 @@
            
         
 
- <!-- per ogni prodotto , nome , prezzo , quantita e subtotale -->
    
     <c:choose>        
            
         <c:when test="${carrello == null || empty carrello.articoli}">
             <p>Il tuo carrello e' vuoto.</p>
-            <p><a href="CatalogoServlet">Vai al catalogo</a></p>
+            <p><a href="CatalogoServlet" class = "bottone" >Vai al catalogo</a></p>
         </c:when>
 
         
@@ -53,7 +52,7 @@
                             
                             <td>&euro; <c:out value="${articolo.subtotale}"/></td>
                             <td>
-                                <a href="RimuoviCarrelloServlet?idProdotto=${articolo.prodotto.idProdotto}">Rimuovi</a>
+                       <a href="RimuoviCarrelloServlet?idProdotto=${articolo.prodotto.idProdotto}" class="bottone-rimuovi">Rimuovi</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -65,9 +64,9 @@
             <h3>Totale: &euro; <c:out value="${carrello.totale}"/></h3>
 
             <p>
-                <a href="CatalogoServlet">Continua lo shopping</a>
+                <a href="CatalogoServlet" class = bottone>Continua lo shopping</a>
                 |
-                <a href="CheckoutServlet">Procedi all'ordine</a>
+               <a href="CheckoutServlet" class="bottone">Procedi all'ordine</a>
             </p>
 
         </c:otherwise>

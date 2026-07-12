@@ -34,7 +34,7 @@
 
     </form>
 
-    <p>Non hai un account? <a href="registrazione.jsp">Registrati</a></p>
+    <p>Non hai un account? <a href="registrazione.jsp" class = "bottone">Registrati</a></p>
     
 <jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 </body>

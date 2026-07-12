@@ -97,7 +97,7 @@
 
     </form>
 
-    <p><a href="CarrelloServlet">Torna al carrello</a></p>
+    <p><a href="CarrelloServlet" class = "bottone">Torna al carrello</a></p>
 
     <!--alla fine scrpt di validazione -->
     

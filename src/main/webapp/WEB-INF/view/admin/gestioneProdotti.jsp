@@ -13,13 +13,12 @@
 
     <h1>Gestione Prodotti</h1>
 
-    <!--  per aggiungere un nuovo prodotto -->
-    <p><a href="AdminNuovoProdottoServlet">+ Aggiungi nuovo prodotto</a></p>
+<a href="AdminNuovoProdottoServlet" class="bottone">+ Aggiungi nuovo prodotto</a>
 
   
     <table border="1">
-        <thead>      <!--  intestazione della tabella -->
-            <tr>     <!--  riga-->
+        <thead>      
+            <tr>    
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Prezzo</th>
@@ -43,14 +42,14 @@
                     </td>
                     
                    <td>
-    <a href="AdminModificaProdottoServlet?id=${prodotto.idProdotto}">Modifica</a>
+<a href="AdminModificaProdottoServlet?id=${prodotto.idProdotto}" class="bottone-piccolo">Modifica</a>
 
     <c:choose>
         <c:when test="${prodotto.attivo}">
-            <a href="AdminEliminaProdottoServlet?id=${prodotto.idProdotto}">Disattiva</a>
+<a href="AdminEliminaProdottoServlet?id=${prodotto.idProdotto}" class="bottone-rimuovi">Disattiva</a>
         </c:when>
         <c:otherwise>
-            <a href="AdminRiattivaProdottoServlet?id=${prodotto.idProdotto}">Riattiva</a>
+<a href="AdminRiattivaProdottoServlet?id=${prodotto.idProdotto}" class="bottone-piccolo">Riattiva</a>
         </c:otherwise>
     </c:choose>
 </td>

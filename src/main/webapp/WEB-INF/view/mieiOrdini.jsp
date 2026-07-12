@@ -17,7 +17,7 @@
     <c:choose>
         <c:when test="${empty listaOrdini}">
             <p>Non hai ancora effettuato ordini.</p>
-            <p><a href="CatalogoServlet">Vai al catalogo</a></p>
+            <p><a href="CatalogoServlet" class = "bottone">Vai al catalogo</a></p>
         </c:when>
         <c:otherwise>
 
@@ -48,7 +48,7 @@
                                 <c:out value="${ordine.provincia}"/>
                             </td>
                             <td>                         
-                            <a href="DettaglioOrdineServlet?idOrdine=${ordine.idOrdine}">Vedi dettagli</a>
+                  <a href="DettaglioOrdineServlet?idOrdine=${ordine.idOrdine}" class="bottone-piccolo">Vedi dettagli</a>
                             </td>
                         </tr>
                     </c:forEach>

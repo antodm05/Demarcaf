@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
     <title>Modifica Prodotto - Area Admin</title>
+    
     <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
@@ -15,7 +17,7 @@
 
     <form action="AdminAggiornaProdottoServlet" method="post" enctype="multipart/form-data">
 
-        <!-- Campo nascosto con l'id: serve alla servlet per sapere che prodotto aggiornare -->
+        <!-- Campo nascosto con l'id -->
         <input type="hidden" name="id" value="${prodotto.idProdotto}"/>
 
         <fieldset>
@@ -23,7 +25,7 @@
 
             <p>
                 <label for="nome">Nome:</label>
-                <!-- value gia' riempito con il valore attuale del prodotto -->
+               
                 <input type="text" id="nome" name="nome" value="${prodotto.nome}" required="required"/>
             </p>
 
@@ -99,7 +101,7 @@
 
     </form>
 
-    <p><a href="AdminProdottiServlet">Torna all'elenco prodotti</a></p>
+    <p><a href="AdminProdottiServlet" class = "bottone-piccolo">Torna all'elenco prodotti</a></p>
 <jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>

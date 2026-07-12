@@ -19,7 +19,7 @@ public class RimuoviCarrelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // id
+        
         int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
 
        

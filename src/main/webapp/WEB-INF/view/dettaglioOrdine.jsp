@@ -44,7 +44,7 @@
         </c:otherwise>
     </c:choose>
 
-    <p><a href="MieiOrdiniServlet">Torna ai miei ordini</a></p>
+<a href="MieiOrdiniServlet" class="bottone">Torna ai miei ordini</a>
 
     <jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 

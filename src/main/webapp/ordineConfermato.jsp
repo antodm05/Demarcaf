@@ -12,7 +12,7 @@
 <body>
     <h1>Grazie per il tuo ordine!</h1>
     <p>Il tuo ordine e' stato registrato con successo.</p>
-    <p><a href="CatalogoServlet">Torna al catalogo</a></p>
+    <p><a href="CatalogoServlet" class = "bottone">Torna al catalogo</a></p>
     <jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 </body>
 </html>

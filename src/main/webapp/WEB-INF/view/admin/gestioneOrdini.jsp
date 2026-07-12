@@ -45,7 +45,7 @@
     </form>
 
    
-    <p><a href="AdminOrdiniServlet">Mostra tutti gli ordini</a></p>
+    <p><a href="AdminOrdiniServlet" class="bottone-piccolo">Mostra tutti gli ordini</a></p>
 
     <!-- tab ordini -->
     <h2>Elenco ordini</h2>

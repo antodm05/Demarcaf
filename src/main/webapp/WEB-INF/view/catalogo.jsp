@@ -15,7 +15,7 @@
 
   
     
-    <p><a href="CarrelloServlet">Vai al carrello</a></p>
+    <p><a href="CarrelloServlet" class = "bottone">Vai al carrello</a></p>
 
     <!--  prodotti attivi -->
     <c:forEach var="prodotto" items="${listaProdotti}">

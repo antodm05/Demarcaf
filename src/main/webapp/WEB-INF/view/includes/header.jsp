@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<!-- menu universale -->
+
 <header class="header-sito">
     <div class="logo">
         <a href="index.jsp">DEMARCAF</a>
