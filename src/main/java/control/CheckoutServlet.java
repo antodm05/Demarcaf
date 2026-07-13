@@ -21,10 +21,8 @@ public class CheckoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Recupero la sessione 
         HttpSession sessione = request.getSession(false);
 
-        // Controllo che l'utente sia loggato 
         UtenteBean utente = null;
         if (sessione != null) {
             utente = (UtenteBean) sessione.getAttribute("utenteLoggato");
@@ -34,7 +32,6 @@ public class CheckoutServlet extends HttpServlet {
             return; 
         }
 
-        // recup carrello sempre da sessione 
         Carrello carrello = (Carrello) sessione.getAttribute("carrello");
         if (carrello == null || carrello.getArticoli().isEmpty()) {
             response.sendRedirect("CarrelloServlet?errore=carrelloVuoto");

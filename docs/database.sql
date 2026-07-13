@@ -111,4 +111,8 @@ USE demarcaf;
 SELECT id_prodotto, nome, quantita FROM prodotto;
 
 USE demarcaf;
-ALTER TABLE ordine ADD COLUMN note VARCHAR(500);ALTER TABLE ordine ADD COLUMN note VARCHAR(500);
+ALTER TABLE ordine ADD COLUMN note VARCHAR(500);
+
+
+USE demarcaf;
+SELECT id_prodotto, nome, immagine FROM prodotto;
