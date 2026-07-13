@@ -54,7 +54,7 @@
 
        
         <figure class="foto-lato">
-            <img src="images/singola cialda.jpg" alt="Cialde DEMARCAF"/>
+            <img src="images/singolacialda.jpg" alt="Cialde DEMARCAF"/>
             <figcaption>Le nostre cialde artigianali</figcaption>
         </figure>
         
@@ -63,7 +63,7 @@
   
    <section class="foto-sotto">
         <figure>
-            <img src="images/furgone papà.jpg" alt="Tazzina DEMARCAF"/>
+            <img src="images/furgonepapa.jpg" alt="Tazzina DEMARCAF"/>
              <figcaption>Sempre pronti per voi</figcaption>
             
         </figure>
