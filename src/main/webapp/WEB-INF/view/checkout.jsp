@@ -13,13 +13,12 @@
 
     <h1>Completa il tuo ordine</h1>
 
-    <!-- RIEPILOGO CARRELLO -->
     <h2>Riepilogo</h2>
     <table border="1">
         <thead>
             <tr>
                 <th>Prodotto</th>
-                <th>Quantita'</th>
+                <th>Quantità</th>
                 <th>Subtotale</th>
             </tr>
         </thead>
@@ -50,7 +49,7 @@
             </p>
 
             <p>
-                <label for="citta">Citta':</label>  <!-- lo riempio via ajax-->
+                <label for="citta">Città:</label>  <!-- lo riempio via ajax-->
                 
                 <select id="citta" name="citta">
                     <option value="">-- Prima scegli la provincia --</option>
