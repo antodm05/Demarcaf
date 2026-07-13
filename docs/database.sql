@@ -35,6 +35,7 @@ CREATE TABLE ordine (
     indirizzo VARCHAR(255) NOT NULL,
     citta VARCHAR(100) NOT NULL,
     cap VARCHAR(5) NOT NULL,
+    note VARCHAR(500),
     provincia VARCHAR(2),
     metodo_pagamento VARCHAR(20) NOT NULL,
     stato VARCHAR(20) NOT NULL DEFAULT 'in elaborazione',
