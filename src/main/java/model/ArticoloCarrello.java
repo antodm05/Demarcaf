@@ -9,8 +9,6 @@ public class ArticoloCarrello implements Serializable {
 
     
     private ProdottoBean prodotto;
-
-    
     private int quantita;
 
     public ArticoloCarrello() {

@@ -44,6 +44,7 @@ public class AuthFilter implements Filter {
                 res.sendRedirect(req.getContextPath() + "/login.jsp?errore=nonAutorizzato");
                 return; // fermo qui: non lascio passare la richiesta
             }
+            
         }
 
         // Se e' tutto ok  passare la richiesta

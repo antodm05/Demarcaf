@@ -41,6 +41,23 @@ public class Carrello implements Serializable {
     public void rimuoviProdotto(int idProdotto) {
         articoli.removeIf(articolo -> articolo.getProdotto().getIdProdotto() == idProdotto);
     }
+    
+    
+  //-------------------------------------------------------------------
+
+    public void aggiornaQuantita(int idProdotto, int nuovaQuantita) {
+        for (ArticoloCarrello articolo : articoli) {
+            if (articolo.getProdotto().getIdProdotto() == idProdotto) {
+                if (nuovaQuantita <= 0) {
+
+                	rimuoviProdotto(idProdotto);
+                } else {
+                    articolo.setQuantita(nuovaQuantita);
+                }
+                return;
+            }
+        }
+    }
 
     public void svuota() {
         articoli.clear();
@@ -58,3 +75,6 @@ public class Carrello implements Serializable {
         return articoli.size();
     }
 }
+
+
+

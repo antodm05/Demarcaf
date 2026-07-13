@@ -21,7 +21,7 @@
     <c:choose>        
            
         <c:when test="${carrello == null || empty carrello.articoli}">
-            <p>Il tuo carrello e' vuoto.</p>
+            <p>Il tuo carrello è vuoto.</p>
             <p><a href="CatalogoServlet" class = "bottone" >Vai al catalogo</a></p>
         </c:when>
 
@@ -38,7 +38,7 @@
                         <th>Prezzo</th>
                         <th>Quantita'</th>
                         <th>Subtotale</th>
-                        <th>Azioni</th>
+                        <th>quantità</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +52,16 @@
                             
                             <td>&euro; <c:out value="${articolo.subtotale}"/></td>
                             <td>
-                       <a href="RimuoviCarrelloServlet?idProdotto=${articolo.prodotto.idProdotto}" class="bottone-rimuovi">Rimuovi</a>
+                            
+                                <form action="AggiornaCarrelloServlet" method="post" style="display:inline;">
+                                
+                                    <input type="hidden" name="idProdotto" value="${articolo.prodotto.idProdotto}"/>
+                                    <input type="number" name="quantita" value="${articolo.quantita}"
+                                           min="1" max="${articolo.prodotto.quantita}" style="width:60px;"/>
+                                    <input type="submit" value="Aggiorna"/>
+                                </form>
+
+                                <a href="RimuoviCarrelloServlet?idProdotto=${articolo.prodotto.idProdotto}" class="bottone-rimuovi">Rimuovi</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -64,9 +73,12 @@
             <h3>Totale: &euro; <c:out value="${carrello.totale}"/></h3>
 
             <p>
-                <a href="CatalogoServlet" class = bottone>Continua lo shopping</a>
+                <a href="CatalogoServlet" class = "bottone"> Continua lo shopping</a>
                 |
                <a href="CheckoutServlet" class="bottone">Procedi all'ordine</a>
+                |
+               <a href="SvuotaCarrelloServlet" class="bottone-rimuovi">Svuota carrello</a>
+               
             </p>
 
         </c:otherwise>

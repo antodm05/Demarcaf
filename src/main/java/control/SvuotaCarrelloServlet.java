@@ -1,0 +1,33 @@
+package control;
+
+import java.io.IOException;
+
+import model.Carrello;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+@WebServlet("/SvuotaCarrelloServlet")
+public class SvuotaCarrelloServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession sessione = request.getSession(false);
+
+       
+        if (sessione != null) {
+            Carrello carrello = (Carrello) sessione.getAttribute("carrello");
+            if (carrello != null) {
+                carrello.svuota();   
+            }
+        }
+
+        response.sendRedirect("CarrelloServlet");
+    }
+}
