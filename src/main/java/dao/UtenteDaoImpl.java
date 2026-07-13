@@ -9,7 +9,6 @@ import javax.sql.DataSource;
 
 import model.UtenteBean;
 
-//implemento l'interfaccia 
 
 public class UtenteDaoImpl implements UtenteDao {
 	
@@ -22,19 +21,16 @@ public class UtenteDaoImpl implements UtenteDao {
     @Override
     public void doSave(UtenteBean utente) throws SQLException 
     {
-    	//non inserimao i valori direttamente ma li inseriamo dopo e poi ci protegge dai SQL INJECTION
         String sql = "INSERT INTO utente (email, password, ruolo, nome, cognome) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = ds.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, utente.getEmail());
-            //richiamo la funzione di protezione per la password
             ps.setString(2, utils.SecurityUtils.toDigest(utente.getPassword()));
             ps.setString(3, utente.getRuolo());
             ps.setString(4, utente.getNome());
             ps.setString(5, utente.getCognome());
-//esegue insert 
             ps.executeUpdate();
         }
     }

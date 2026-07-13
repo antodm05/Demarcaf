@@ -31,10 +31,8 @@ public class LoginServlet extends HttpServlet {
         UtenteDao utenteDao = new UtenteDaoImpl(connessioneDB);
 
         try {
-        	//cerco email
             UtenteBean utente = utenteDao.doRetrieveByEmail(email);
 
-            // cifro la password
             String passwordCifrata = SecurityUtils.toDigest(passwordInserita);
 
             if (utente != null && utente.getPassword().equals(passwordCifrata)) {
@@ -43,7 +41,6 @@ public class LoginServlet extends HttpServlet {
                 sessione.setAttribute("utenteLoggato", utente);
                 sessione.setAttribute("ruolo", utente.getRuolo());
 
-                // Reindirizzo 
                 response.sendRedirect("index.jsp");
 
             } else {
