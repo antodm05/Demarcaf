@@ -28,7 +28,7 @@
 
         <figure class="foto-lato">
         <img src="images/taz.jpeg" alt="tazzina" class="foto-lato"/>
-                    <figcaption>Il gusto autentico del caffe'</figcaption>
+                    <figcaption>Il gusto autentico del caffè</figcaption>
         
         </figure>
         <div class="colonna-centrale">
@@ -64,7 +64,7 @@
    <section class="foto-sotto">
         <figure>
             <img src="images/furgone papà.jpg" alt="Tazzina DEMARCAF"/>
-             <figcaption>Sempre in movimento per te</figcaption>
+             <figcaption>Sempre pronti per voi</figcaption>
             
         </figure>
     </section>

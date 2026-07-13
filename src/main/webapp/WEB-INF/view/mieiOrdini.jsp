@@ -60,7 +60,7 @@
         </c:otherwise>
     </c:choose>
 
-    <p><a href="index.jsp">Torna alla home</a></p>
+    <p><a href="index.jsp" class ="bottone">Torna alla home</a></p>
 <jsp:include page="/WEB-INF/view/includes/footer.jsp"/>
 
 </body>

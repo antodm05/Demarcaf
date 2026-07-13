@@ -7,6 +7,9 @@ body {  /* stile generale */
     margin: 0;
     padding: 0;
     line-height: 1.6;                       /*spazio verticale tra le righe di testo */
+    display: flex;                 /* impila header, contenuto, footer in colonna */
+    flex-direction: column;
+    min-height: 100vh;             /* il body e' alto almeno quanto lo schermo */
 }
 
 h1, h2, h3 {
@@ -234,11 +237,12 @@ img {
     height: auto;      
 }
 
+
 /* info contatti */
 .footer-sito {
     background-color: #3E2723;   /* marrone scuro*/
     color: #F5F0E6;              /*  crema */
-    margin-top: 40px;            
+    margin-top: auto;              
     padding: 30px 20px 15px 20px;
 }
 
@@ -406,4 +410,12 @@ img {
     margin: 30px 20px 15px 20px;
 }
 
+
+.saluto {
+    text-align: center;
+        font-size: 25px;
+            font-weight: bold;
+        
+    
+}
 
