@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!doctype html>
 <html>
 <head>
@@ -72,7 +73,7 @@
                     <c:forEach var="ordine" items="${listaOrdini}">
                         <tr>
                             <td><c:out value="${ordine.idOrdine}"/></td>
-                            <td><c:out value="${ordine.data}"/></td>
+                            <td><fmt:formatDate value="${ordine.data}" pattern="dd/MM/yyyy HH:mm"/></td>
                             <td><c:out value="${ordine.emailCliente}"/></td>
                             <td>&euro; <c:out value="${ordine.totale}"/></td>
                             <td><c:out value="${ordine.stato}"/></td>
