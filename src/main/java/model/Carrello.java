@@ -25,8 +25,8 @@ public class Carrello implements Serializable {
 
         for (ArticoloCarrello articolo : articoli) {
             if (articolo.getProdotto().getIdProdotto() == prodotto.getIdProdotto()) {
-                // aumento la quantita 
-                articolo.setQuantita(articolo.getQuantita() + quantita);
+
+            	articolo.setQuantita(articolo.getQuantita() + quantita);
                 return;
             }
         }

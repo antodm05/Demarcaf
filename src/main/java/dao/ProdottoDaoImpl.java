@@ -13,7 +13,6 @@ import model.ProdottoBean;
 
 public class ProdottoDaoImpl implements ProdottoDao {
 
-    // apre pool di connessioni
     private DataSource connessioneDB;
 
     public ProdottoDaoImpl(DataSource ds) {
@@ -23,10 +22,9 @@ public class ProdottoDaoImpl implements ProdottoDao {
     @Override
     public List<ProdottoBean> doRetrieveAllActive() throws SQLException {
 
-        // lista vuota 
+         
         List<ProdottoBean> listaProdotti = new ArrayList<ProdottoBean>();
 
-        // solo prodotti attivi, non cancellati
         String sql = "SELECT * FROM prodotto WHERE attivo = true";
 
         try (Connection conn = connessioneDB.getConnection();
@@ -34,10 +32,8 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
             try (ResultSet rs = ps.executeQuery()) {
 
-                // Scorro tutte le righe 
                 while (rs.next()) {
 
-                    // Per ogni riga creo un bean , riempio con i dati dal DB
                     ProdottoBean prodotto = new ProdottoBean();
                     prodotto.setIdProdotto(rs.getInt("id_prodotto"));
                     prodotto.setNome(rs.getString("nome"));
@@ -98,7 +94,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         try (Connection conn = connessioneDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            // Riempio i ? con i dati 
+           
             ps.setString(1, prodotto.getNome());
             ps.setString(2, prodotto.getDescrizione());
             ps.setDouble(3, prodotto.getPrezzo());

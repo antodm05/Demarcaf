@@ -17,7 +17,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-// Servlet che aggiunge un prodotto al carrello 
 @WebServlet("/AggiungiCarrelloServlet")
 public class AggiungiCarrelloServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -25,21 +24,17 @@ public class AggiungiCarrelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Leggo l'id del prodotto e la quantita 
         int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
         int quantita = Integer.parseInt(request.getParameter("quantita"));
 
-        // Recupero il prodotto
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
 
         try {
             ProdottoBean prodotto = prodottoDao.doRetrieveById(idProdotto);
 
-            // Recupero la sessione 
             HttpSession sessione = request.getSession();
 
-            //  Prendo il carrello dalla sessione
             
             Carrello carrello = (Carrello) sessione.getAttribute("carrello");
             if (carrello == null) {
@@ -47,10 +42,8 @@ public class AggiungiCarrelloServlet extends HttpServlet {
                 sessione.setAttribute("carrello", carrello);
             }
 
-            // Aggiungo il prodotto 
             carrello.aggiungiProdotto(prodotto, quantita);
 
-            //  carrello aggiornato
             response.sendRedirect("CarrelloServlet");
 
         } catch (SQLException e) {

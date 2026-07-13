@@ -18,7 +18,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-// Servlet che conferma e salva l'ordine nel database
 @WebServlet("/ConfermaOrdineServlet")
 public class ConfermaOrdineServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -29,7 +28,6 @@ public class ConfermaOrdineServlet extends HttpServlet {
          
         HttpSession sessione = request.getSession(false);
 
-        // controllo utente e carrello 
         UtenteBean utente = null;
         Carrello carrello = null;
         if (sessione != null) {
@@ -53,10 +51,10 @@ public class ConfermaOrdineServlet extends HttpServlet {
         String metodoPagamento = request.getParameter("metodoPagamento");
         String note = request.getParameter("note");
 
-        //  Costruisco l'oggetto ordine con tutti i dati
+       
         OrdineBean ordine = new OrdineBean();
-        ordine.setIdUtente(utente.getIdUtente());       // chi ordina (dalla sessione)
-        ordine.setTotale(carrello.getTotale());         // totale (calcolato dal carrello)
+        ordine.setIdUtente(utente.getIdUtente());       
+        ordine.setTotale(carrello.getTotale());         
         ordine.setIndirizzo(indirizzo);
         ordine.setCitta(citta);
         ordine.setCap(cap);
@@ -64,7 +62,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
         ordine.setMetodoPagamento(metodoPagamento);
         ordine.setNote(note);
         
-        //Salvo l'ordine nel database del dao
+        //Salvo 
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         OrdineDao ordineDao = new OrdineDaoImpl(connessioneDB);
 
