@@ -1,27 +1,21 @@
-// Verifico che sia valida la form di registrazione
 
+const patternNome = /^[A-Za-zÀ-ù ]{2,}$/; 
 
-const patternNome = /^[A-Za-zÀ-ù ]{2,}$/; //includo lettere maiuscole e minuscole e voglio almeno 2 caratteri apparte gli accenti
-
-// Email
 const patternEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Password almeno 6 caratteri
 const patternPassword = /^.{6,}$/;
 
 
-//VALIDAZIONE
-// Controlla un campo(input utente) con un pattern(regex) span fa apparire mess di errore .
+
 
 function validaCampo(campo, pattern, span, messaggio) {
-    if (campo.value.match(pattern)) //vedo se il campo combacia con la regex
+    if (campo.value.match(pattern)) 
 		{
-        // VALIDO risptta il pattern posso togliere la classe errore del css
         campo.classList.remove("error");
         span.innerHTML = "";
         return true;
     } else {
-        // se non è valido aggiungo la classe error e mostro il messaggio nel DOM nello span
+      
         campo.classList.add("error");
         span.innerHTML = messaggio;
         return false;
@@ -29,7 +23,6 @@ function validaCampo(campo, pattern, span, messaggio) {
 }
 
 
-// funzioni PER OGNI CAMPO ---
 
 function validaNome() {
     let campo = document.getElementById("nome");
@@ -56,13 +49,11 @@ function validaPassword() {
 }
 
 
-// valido l'invio contrllando tutti i campi
 function validaForm() {
-    let okNome = validaNome(); //devono essere tutti true
+    let okNome = validaNome(); 
     let okCognome = validaCognome();
     let okEmail = validaEmail();
     let okPassword = validaPassword();
 
-   //devono essere tutti validi
     return okNome && okCognome && okEmail && okPassword;
 }

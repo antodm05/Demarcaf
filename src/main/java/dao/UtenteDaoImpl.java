@@ -39,18 +39,14 @@ public class UtenteDaoImpl implements UtenteDao {
     public UtenteBean doRetrieveByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM utente WHERE email = ?";
 
-        // statement si chiudono da solo alla fine
         try (Connection conn = ds.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, email);
 
-            // executeQuery perche  e una SELECT per leggere e non modificare
             try (ResultSet rs = ps.executeQuery()) {
 
-                // Se rs.next() e' vero, significa che ho trovato un utente
                 if (rs.next()) {
-                    // Creo un oggetto bean vuoto e lo riempio con i dati dal DB
                     UtenteBean utente = new UtenteBean();
                     utente.setIdUtente(rs.getInt("id_utente"));
                     utente.setEmail(rs.getString("email"));

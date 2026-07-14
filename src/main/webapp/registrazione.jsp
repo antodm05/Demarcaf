@@ -12,7 +12,6 @@
 
     <h1>Registrati</h1>
 
-    <!--  valida tutto all'invio  -->
     <form action="RegistrazioneServlet" method="post" onsubmit="return validaForm()">
 
         <fieldset>
@@ -20,9 +19,7 @@
 
             <p>
                 <label for="nome">Nome:</label>
-                <!-- valida appena esco dal campo -->
                 <input type="text" id="nome" name="nome" onchange="validaNome()"/>
-                <!-- span mes di errore -->
                 <span id="erroreNome" class="messaggioErrore"></span>
             </p>
 
