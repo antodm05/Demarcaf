@@ -28,6 +28,7 @@ public class CatalogoServlet extends HttpServlet {
             throws ServletException, IOException {
 
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
+        
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
         CategoriaDao categoriaDao = new CategoriaDaoImpl(connessioneDB);
 

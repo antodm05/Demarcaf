@@ -18,13 +18,12 @@
 
     <p><a href="CarrelloServlet" class="bottone">Vai al carrello</a></p>
 
-    <!--  per ogni categoria -->
+    <!--   ogni categoria -->
     <c:forEach var="categoria" items="${listaCategorie}">
 
-        <!-- Titolo della categoria -->
         <h2 class="titolo-categoria"><c:out value="${categoria.nome}"/></h2>
 
-        <!-- per 1 categoria -->
+        <!-- per prodotto -->
         <c:forEach var="prodotto" items="${listaProdotti}">
             <c:if test="${prodotto.idCategoria == categoria.idCategoria}">
 
@@ -32,7 +31,7 @@
                     <h3><c:out value="${prodotto.nome}"/></h3>
                     <p><c:out value="${prodotto.descrizione}"/></p>
                     <p>Prezzo: &euro; <c:out value="${prodotto.prezzo}"/></p>
-                    <p>Disponibilita': <c:out value="${prodotto.quantita}"/></p>
+                    <p>Disponibilità: <c:out value="${prodotto.quantita}"/></p>
 
                     <c:if test="${not empty prodotto.immagine}">
                         <img src="images/${prodotto.immagine}" alt="${prodotto.nome}" width="150"/>
@@ -42,7 +41,7 @@
 
                         <input type="hidden" name="idProdotto" value="${prodotto.idProdotto}"/>
 
-                        <label for="qta${prodotto.idProdotto}">Quantita':</label>
+                        <label for="qta${prodotto.idProdotto}">Quantità:</label>
                         <input type="number" id="qta${prodotto.idProdotto}" name="quantita"
                                value="1" min="1" max="${prodotto.quantita}"/>
 
