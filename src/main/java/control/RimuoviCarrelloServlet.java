@@ -25,7 +25,6 @@ public class RimuoviCarrelloServlet extends HttpServlet {
        
         HttpSession sessione = request.getSession(false);
 
-        // se ce sessione e carrello rimuovo
         if (sessione != null) {
             Carrello carrello = (Carrello) sessione.getAttribute("carrello");
             if (carrello != null) {

@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-// Servlet che mostra il contenuto del carrello
 @WebServlet("/CarrelloServlet")
 public class CarrelloServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -23,13 +22,11 @@ public class CarrelloServlet extends HttpServlet {
         
         HttpSession sessione = request.getSession(false);
 
-        // Prendo il carrello dalla sessione
-        Carrello carrello = null;
+      Carrello carrello = null;
         if (sessione != null) {
             carrello = (Carrello) sessione.getAttribute("carrello");
         }
 
-        // Metto il carrello nella request  
    
         request.setAttribute("carrello", carrello);
 
