@@ -45,10 +45,9 @@
                             <td>
       
                                 <c:out value="${ordine.citta}"/>
-                                <c:out value="${ordine.indirizzo}"/> 
+                                <c:out value="${ordine.indirizzo}"/>                                 
                                 <c:out value="${ordine.provincia}"/>
-                                <c:out value="${ordine.note}"/>
-                                
+                               
                             </td>
                             <td>                         
                   <a href="DettaglioOrdineServlet?idOrdine=${ordine.idOrdine}" class="bottone-piccolo">Vedi dettagli</a>

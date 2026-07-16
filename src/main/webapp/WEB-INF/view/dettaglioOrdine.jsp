@@ -28,6 +28,7 @@
                         <th>Quantita'</th>
                         <th>Prezzo unitario (pagato)</th>
                         <th>Subtotale</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,7 @@
                             <td><c:out value="${dettaglio.quantita}"/></td>
                             <td>&euro; <c:out value="${dettaglio.prezzoUnitario}"/></td>
                             <td>&euro; <c:out value="${dettaglio.prezzoUnitario * dettaglio.quantita}"/></td>
+                            
                         </tr>
                     </c:forEach>
                 </tbody>

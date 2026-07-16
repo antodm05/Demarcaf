@@ -19,7 +19,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-// Servlet che mostra il dettaglio dei prodotti di un ordine
 @WebServlet("/DettaglioOrdineServlet")
 public class DettaglioOrdineServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -39,14 +38,12 @@ public class DettaglioOrdineServlet extends HttpServlet {
             return;
         }
 
-        //  voglio i dettagli 
         int idOrdine = Integer.parseInt(request.getParameter("idOrdine"));
 
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         OrdineDao ordineDao = new OrdineDaoImpl(connessioneDB);
 
         try {
-            // Carico 
             List<DettaglioOrdineBean> listaDettagli = ordineDao.doRetrieveDettagli(idOrdine);
             request.setAttribute("listaDettagli", listaDettagli);
             request.setAttribute("idOrdine", idOrdine);

@@ -109,10 +109,8 @@ public class OrdineDaoImpl implements OrdineDao {
     @Override
     public List<OrdineBean> doRetrieveByUtente(int idUtente) throws SQLException {
 
-        // Lista che conterra' gli ordini trovati
         List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
 
-        // Cerco gli ordini di questo utente, [dal piu recente al piu vecchio] FILTRO PER ID COSI OGNI UTENTE VEDE IL PROPRIO STORICO 
         String sql = "SELECT * FROM ordine WHERE id_utente = ? ORDER BY data DESC";
 
         try (Connection conn = connessioneDB.getConnection();
@@ -121,7 +119,6 @@ public class OrdineDaoImpl implements OrdineDao {
             ps.setInt(1, idUtente);
 
             try (ResultSet rs = ps.executeQuery()) {
-                // Ciclo su tutti gli ordini trovati 
                 while (rs.next()) {
                     OrdineBean ordine = new OrdineBean();
                     ordine.setIdOrdine(rs.getInt("id_ordine"));
@@ -134,7 +131,6 @@ public class OrdineDaoImpl implements OrdineDao {
                     ordine.setMetodoPagamento(rs.getString("metodo_pagamento"));
                     ordine.setStato(rs.getString("stato"));
                     ordine.setIdUtente(rs.getInt("id_utente"));
-                    ordine.setNote(rs.getString("note"));
                     listaOrdini.add(ordine);
                 }
             }
@@ -143,13 +139,11 @@ public class OrdineDaoImpl implements OrdineDao {
     }
     
     //--------------------------------------------------------------------------------
-    // TUTTI GLI ORDINI per l'admin senza filtri
     @Override
     public List<OrdineBean> doRetrieveAllPerAdmin() throws SQLException {
 
         List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
 
-        // Prendo tutti gli ordini + l'email del cliente con la JOIN tramite id_utente, cosi' posso avere anche l'email del cliente.
 
         String sql = "SELECT ordine.*, utente.email AS email_cliente FROM ordine "
                    + "JOIN utente ON ordine.id_utente = utente.id_utente " // cosi per ogni ordine ho anche i dati del cliente che l'ha fatto
@@ -168,14 +162,12 @@ public class OrdineDaoImpl implements OrdineDao {
 
 //----------------------------------------------------------------------------
     
-    //  ORDINI PER INTERVALLO DI DATE
     @Override
     public List<OrdineBean> doRetrieveByData(String dataInizio, String dataFine) throws SQLException {
 
         List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
 
        
-        // dalla data di inizio in poi e fino alla data di fine
         
         String sql = "SELECT ordine.*, utente.email AS email_cliente FROM ordine "
                    + "JOIN utente ON ordine.id_utente = utente.id_utente "
@@ -201,14 +193,12 @@ public class OrdineDaoImpl implements OrdineDao {
 
 
     // --------------------------------------------------------------
-    //  ORDINI DI UN CLIENTE cercato per email
     @Override
     public List<OrdineBean> doRetrieveByEmailCliente(String email) throws SQLException {
 
         List<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
 
     
-        // LIKE % fa una ricerca PARZIALE non serve scrivere l'email esatta
         String sql = "SELECT ordine.*, utente.email AS email_cliente FROM ordine "
                    + "JOIN utente ON ordine.id_utente = utente.id_utente "
                    + "WHERE utente.email LIKE ? "
@@ -230,7 +220,6 @@ public class OrdineDaoImpl implements OrdineDao {
 
 
     // -------------------------------------------------------------------
-    // trasforma una riga in un OrdineBean Lo uso in tutti e 3 i metodi
     private OrdineBean estraiOrdine(ResultSet rs) throws SQLException {
         OrdineBean ordine = new OrdineBean();
         ordine.setIdOrdine(rs.getInt("id_ordine"));
@@ -253,7 +242,6 @@ public class OrdineDaoImpl implements OrdineDao {
 
         List<DettaglioOrdineBean> listaDettagli = new ArrayList<DettaglioOrdineBean>();
 
-        // + dettagli 
         String sql = "SELECT dettaglio_ordine.*, prodotto.nome AS nome_prodotto "
                    + "FROM dettaglio_ordine "
                    + "JOIN prodotto ON dettaglio_ordine.id_prodotto = prodotto.id_prodotto "
