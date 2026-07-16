@@ -1,23 +1,12 @@
-
-// validazione chekout (dati di spedizione)
-
-
-// pattern regex
-
-// Indirizzo: lettere, numeri, spazi, virgole e punti
 const patternIndirizzo = /^[A-Za-zÀ-ù0-9 ,.]{5,}$/;
 
-// Citta
 const patternCitta = /^[A-Za-zÀ-ù ]{2,}$/;
 
-// CAP solo 5 cifre 
 const patternCap = /^[0-9]{5}$/;
 
-// Provincia solo 2 lettere
 const patternProvincia = /^[A-Za-z]{2}$/;
 
 
-// valido campo praticamente la stessa per valutare i campi input della registrazione
 function validaCampo(campo, pattern, span, messaggio) {
     if (campo.value.match(pattern)) {
         campo.classList.remove("error");
@@ -31,7 +20,6 @@ function validaCampo(campo, pattern, span, messaggio) {
 }
 
 
-// funzione per ogni campo
 
 function validaIndirizzo() {
     let campo = document.getElementById("indirizzo");
@@ -58,7 +46,6 @@ function validaProvincia() {
 }
 
 
-// devono essere tutti true per partire
 function validaFormCheckout() {
     let okIndirizzo = validaIndirizzo();
     let okCitta = validaCitta();

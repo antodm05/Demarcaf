@@ -62,7 +62,6 @@ public class ConfermaOrdineServlet extends HttpServlet {
         ordine.setMetodoPagamento(metodoPagamento);
         ordine.setNote(note);
         
-        //Salvo 
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         OrdineDao ordineDao = new OrdineDaoImpl(connessioneDB);
 

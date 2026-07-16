@@ -34,7 +34,6 @@
     </table>
     <h3>Totale: &euro; <c:out value="${carrello.totale}"/></h3>
 
-    <!--  dati di spedizione + JS  -->
     
     <h2>Dati di spedizione</h2>
     <form action="ConfermaOrdineServlet" method="post" onsubmit="return validaFormCheckout()">
@@ -66,7 +65,6 @@
             <p>
                 <label for="provincia">Provincia:</label>
                 
-                <!--via ajax lo modifico -->
                 <select id="provincia" name="provincia" onchange="caricaComuni()">
                     <option value="">-- Seleziona la provincia --</option>
                     <option value="SA">Salerno (SA)</option>
@@ -107,7 +105,7 @@
 
     <p><a href="CarrelloServlet" class = "bottone">Torna al carrello</a></p>
 
-    <!--alla fine scrpt di validazione -->
+    <!--JS -->
     
     <script src="scripts/validazioneCheckout.js"></script>
         <script src="scripts/ajaxComuni.js"></script>

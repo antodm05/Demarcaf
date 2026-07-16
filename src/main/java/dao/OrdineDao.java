@@ -13,7 +13,6 @@ public interface OrdineDao {
 
     List<OrdineBean> doRetrieveByUtente(int idUtente) throws SQLException;
 
-    // Tutti gli ordini di tutti i clienti per l'admin
     List<OrdineBean> doRetrieveAllPerAdmin() throws SQLException;
 
     List<OrdineBean> doRetrieveByData(String dataInizio, String dataFine) throws SQLException;

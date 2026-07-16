@@ -25,62 +25,55 @@ public class OrdineDaoImpl implements OrdineDao {
     @Override
     public void doSave(OrdineBean ordine, List<ArticoloCarrello> articoli) throws SQLException {
 
-        // var per la connessione
         Connection conn = null;
 
         try {
-            conn = connessioneDB.getConnection();//  Apro la connessione al database dal pool
+            conn = connessioneDB.getConnection();
 
-            //  disabilito il salvataggio automatico pk voglio che si salvi tutto (ordine + righe) come blocco unico senza dover fare auto salvare le query
             conn.setAutoCommit(false);
 
-            // salvo l'ordine principale con NOW per prendere la data 
             String sqlOrdine = "INSERT INTO ordine (data, totale, indirizzo, citta, cap, "
                     + "provincia, metodo_pagamento, stato, id_utente, note) "
                     + "VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            // Statement.RETURN_GENERATED_KEYS: mi faccio restituire l'id per poter identificare l'ordine e collegarci le righe gli sto chiedendo di ricordarlo
             PreparedStatement psOrdine = conn.prepareStatement(sqlOrdine, Statement.RETURN_GENERATED_KEYS);
-            psOrdine.setDouble(1, ordine.getTotale()); //valore dell'oggetto
-            psOrdine.setString(2, ordine.getIndirizzo()); //riempio i ? dell 'ordine ed eseguo INSERT
+            psOrdine.setDouble(1, ordine.getTotale()); 
+            psOrdine.setString(2, ordine.getIndirizzo()); 
             psOrdine.setString(3, ordine.getCitta());
             psOrdine.setString(4, ordine.getCap());
             psOrdine.setString(5, ordine.getProvincia());
             psOrdine.setString(6, ordine.getMetodoPagamento());
-            psOrdine.setString(7, "in elaborazione"); // per lo stato
+            psOrdine.setString(7, "in elaborazione");
             psOrdine.setInt(8, ordine.getIdUtente());
             psOrdine.setString(9, ordine.getNote());
             psOrdine.executeUpdate();
 
-            // Recupero l'id dell'ordine appena creato 
+           
             int idOrdineGenerato = 0;
             try (ResultSet rs = psOrdine.getGeneratedKeys()) {
                 if (rs.next()) {
-                    idOrdineGenerato = rs.getInt(1); // prendo solo il primo che è stato generato
+                    idOrdineGenerato = rs.getInt(1); 
                 }
             }
             psOrdine.close();
 
-            //  dopo aver preso id ordine e aver riempito i campi salvo ogni riga in dettaglio 
             String sqlDettaglio = "INSERT INTO dettaglio_ordine (id_ordine, id_prodotto, "
                     + "quantita, prezzo_unitario) VALUES (?, ?, ?, ?)";
             PreparedStatement psDettaglio = conn.prepareStatement(sqlDettaglio);
 
-            // Per ogni articolo del carrello creo una riga
             for (ArticoloCarrello articolo : articoli) {
-                psDettaglio.setInt(1, idOrdineGenerato); // collego questa riga all'ordine 
+                psDettaglio.setInt(1, idOrdineGenerato); 
                 psDettaglio.setInt(2, articolo.getProdotto().getIdProdotto());
                 psDettaglio.setInt(3, articolo.getQuantita());
                 
-                // copio il prezzo  
                 
                 psDettaglio.setDouble(4, articolo.getProdotto().getPrezzo());
-                psDettaglio.addBatch(); // accumulo le righe cosi le eseguo tutte insieme 
+                psDettaglio.addBatch();  
             }
-            psDettaglio.executeBatch(); // eseguo tutte le righe insieme
+            psDettaglio.executeBatch(); 
             psDettaglio.close();
             
-         // scalo la quantita 
+        
             String sqlScarico = "UPDATE prodotto SET quantita = quantita - ? WHERE id_prodotto = ?";
             PreparedStatement psScarico = conn.prepareStatement(sqlScarico);
 
@@ -94,18 +87,15 @@ public class OrdineDaoImpl implements OrdineDao {
             psScarico.close();
             
             
-            // confermo la transazione 
             conn.commit();
 
         } catch (SQLException e) {
-            // ERRORE: annullo tutto cosi' non resta un ordine a meta usando rollback. ( basta un errore)
             if (conn != null) {
                 conn.rollback();
             }
-            throw e; // rilancio l'errore 
+            throw e;  
 
         } finally {
-            // conn normale e la chiudo
             if (conn != null) {
                 conn.setAutoCommit(true);
                 conn.close();
