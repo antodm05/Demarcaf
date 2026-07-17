@@ -28,11 +28,9 @@ public class AdminNuovoProdottoServlet extends HttpServlet {
         CategoriaDao categoriaDao = new CategoriaDaoImpl(connessioneDB);
 
         try {
-            //riempire il menu a tendina del form
             List<CategoriaBean> listaCategorie = categoriaDao.doRetrieveAll();
             request.setAttribute("listaCategorie", listaCategorie);
 
-            // richiamo la view
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/nuovoProdotto.jsp");
             dispatcher.forward(request, response);
 

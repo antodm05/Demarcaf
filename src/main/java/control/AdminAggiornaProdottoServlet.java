@@ -30,7 +30,6 @@ public class AdminAggiornaProdottoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //  Leggo i dati dal form 
         int idProdotto = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         String descrizione = request.getParameter("descrizione");
@@ -42,35 +41,35 @@ public class AdminAggiornaProdottoServlet extends HttpServlet {
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
 
         try {
-            // Carico il prodotto attuale
             ProdottoBean prodotto = prodottoDao.doRetrieveById(idProdotto);
 
-            //  Gestisco l'immagine
             
             Part partImmagine = request.getPart("immagine");
+            
             if (partImmagine != null && partImmagine.getSize() > 0) {
-                // la salvo con nome univoco
+            	
                 String nomeOriginale = partImmagine.getSubmittedFileName();
+                
                 String estensione = nomeOriginale.substring(nomeOriginale.lastIndexOf("."));
+                
                 String nomeFileImmagine = UUID.randomUUID().toString() + estensione;
-//cartella originale
+                
                 String cartellaUpload = getServletContext().getRealPath("/images");
+                
                 Path percorsoFile = Paths.get(cartellaUpload, nomeFileImmagine);
+                
                 try (InputStream input = partImmagine.getInputStream()) {
-                    Files.copy(input, percorsoFile); //salvo
+                    Files.copy(input, percorsoFile); 
                 }
-                // Aggiorno il bean con la nuova immagine
                 prodotto.setImmagine(nomeFileImmagine);
             }
 
-            // Aggiorno campi
             prodotto.setNome(nome);
             prodotto.setDescrizione(descrizione);
             prodotto.setPrezzo(prezzo);
             prodotto.setQuantita(quantita);
             prodotto.setIdCategoria(idCategoria);
 
-            // Salvo nel db
             prodottoDao.doUpdate(prodotto);
             response.sendRedirect("AdminProdottiServlet?successo=modificato");
 

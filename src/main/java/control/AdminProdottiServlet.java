@@ -28,11 +28,9 @@ public class AdminProdottiServlet extends HttpServlet {
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
 
         try {
-            // L'admin vede tutti i prodotti 
             List<ProdottoBean> listaProdotti = prodottoDao.doRetrieveAll();
             request.setAttribute("listaProdotti", listaProdotti);
 
-            // Forward alla JSP dell'area admin
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/gestioneProdotti.jsp");
             dispatcher.forward(request, response);
 

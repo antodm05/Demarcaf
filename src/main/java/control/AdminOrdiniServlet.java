@@ -17,7 +17,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-// Servlet dell'area admin che mostra gli ordini con filtri opzionali
 @WebServlet("/AdminOrdiniServlet")
 public class AdminOrdiniServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -25,7 +24,6 @@ public class AdminOrdiniServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Leggo i filtri dal form 
         String dataInizio = request.getParameter("dataInizio");
         String dataFine = request.getParameter("dataFine");
         String email = request.getParameter("email");
@@ -36,29 +34,23 @@ public class AdminOrdiniServlet extends HttpServlet {
         try {
             List<OrdineBean> listaOrdini;
 
-            // Scelgo quale metodo chiamare 
 
             
-            //  ha compilato ENTRAMBE le date quindi si va per le date 
             if (dataInizio != null && !dataInizio.isEmpty()
                     && dataFine != null && !dataFine.isEmpty()) {
                 listaOrdini = ordineDao.doRetrieveByData(dataInizio, dataFine);
 
                 
-            //  ha compilato l'email filtro per cliente
             } else if (email != null && !email.isEmpty()) {
                 listaOrdini = ordineDao.doRetrieveByEmailCliente(email);
 
                 
-            //  nessun filtro mostro tutto
             } else {
                 listaOrdini = ordineDao.doRetrieveAllPerAdmin();
             }
 
-            // Metto la lista nella request per la JSP
             request.setAttribute("listaOrdini", listaOrdini);
 
-            // Mostro la pagina admin degli ordini
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/gestioneOrdini.jsp");
             dispatcher.forward(request, response);
 
