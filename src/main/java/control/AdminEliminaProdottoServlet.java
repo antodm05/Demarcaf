@@ -18,19 +18,17 @@ import jakarta.servlet.http.HttpServletResponse;
 public class AdminEliminaProdottoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) //oggetti request e response
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
 
-        // Leggo l'id del prodotto  dal link ?id=
         int idProdotto = Integer.parseInt(request.getParameter("id"));
 
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
 
         try {
-            // Disattivo il prodotto
             prodottoDao.doSoftDelete(idProdotto);
-            // elenco prodotti
+            
             response.sendRedirect("AdminProdottiServlet?successo=eliminato");
         } catch (SQLException e) {
             e.printStackTrace();

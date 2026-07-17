@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-// Servlet che riattiva un prodotto disattivato
 @WebServlet("/AdminRiattivaProdottoServlet")
 public class AdminRiattivaProdottoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -22,7 +21,6 @@ public class AdminRiattivaProdottoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Leggo l'id
         int idProdotto = Integer.parseInt(request.getParameter("id"));
 
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
