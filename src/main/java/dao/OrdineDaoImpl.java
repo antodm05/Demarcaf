@@ -146,7 +146,7 @@ public class OrdineDaoImpl implements OrdineDao {
 
 
         String sql = "SELECT ordine.*, utente.email AS email_cliente FROM ordine "
-                   + "JOIN utente ON ordine.id_utente = utente.id_utente " // cosi per ogni ordine ho anche i dati del cliente che l'ha fatto
+                   + "JOIN utente ON ordine.id_utente = utente.id_utente "
                    + "ORDER BY ordine.data DESC";
 
         try (Connection conn = connessioneDB.getConnection();
@@ -178,7 +178,7 @@ public class OrdineDaoImpl implements OrdineDao {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
       
-            ps.setString(1, dataInizio + " 00:00:00"); // sostituisco i ?
+            ps.setString(1, dataInizio + " 00:00:00"); 
             ps.setString(2, dataFine + " 23:59:59");
 
             try (ResultSet rs = ps.executeQuery()) {
