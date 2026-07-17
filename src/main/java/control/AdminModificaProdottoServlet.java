@@ -27,7 +27,6 @@ public class AdminModificaProdottoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Leggo l'id del prodotto da modificare a dal link ?id=
         int idProdotto = Integer.parseInt(request.getParameter("id"));
 
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
@@ -35,15 +34,12 @@ public class AdminModificaProdottoServlet extends HttpServlet {
         CategoriaDao categoriaDao = new CategoriaDaoImpl(connessioneDB);
 
         try {
-            // Carico il prodotto da modificare 
             ProdottoBean prodotto = prodottoDao.doRetrieveById(idProdotto);
             request.setAttribute("prodotto", prodotto);
 
-            // Carico anche le categorie per il menu a tendina sempre per ADMIN 
             List<CategoriaBean> listaCategorie = categoriaDao.doRetrieveAll();
             request.setAttribute("listaCategorie", listaCategorie);
 
-            // Mostro il form di modifica
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/modificaProdotto.jsp");
             dispatcher.forward(request, response);
 

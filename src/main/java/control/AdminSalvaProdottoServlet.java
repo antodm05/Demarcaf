@@ -30,48 +30,39 @@ public class AdminSalvaProdottoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Leggo i dati testuali dal form
         String nome = request.getParameter("nome");
         String descrizione = request.getParameter("descrizione");
         double prezzo = Double.parseDouble(request.getParameter("prezzo"));
         int quantita = Integer.parseInt(request.getParameter("quantita"));
         int idCategoria = Integer.parseInt(request.getParameter("categoria"));
 
-        // Gestisco l'upload dell'immagine
         String nomeFileImmagine = null;
-        Part partImmagine = request.getPart("immagine"); // Recupero il file vero e proprio
+        Part partImmagine = request.getPart("immagine"); 
 
         if (partImmagine != null && partImmagine.getSize() > 0) {
         	
-            // Prendo il nome originale del file caricato
             String nomeOriginale = partImmagine.getSubmittedFileName();
             
-            // Ricavo l'estensione 
             String estensione = nomeOriginale.substring(nomeOriginale.lastIndexOf("."));
             
-            // Genero un nome UNIVOCO uso l'UUID  casuale per garantire nomi di file univoci ed evitare collisioni
             nomeFileImmagine = UUID.randomUUID().toString() + estensione;
 
-            // Cartella dove salvo fisicamente le immagini
             String cartellaUpload = getServletContext().getRealPath("/images");
             Path percorsoFile = Paths.get(cartellaUpload, nomeFileImmagine);
 
-            // Scrivo il file sul disco
             try (InputStream input = partImmagine.getInputStream()) {
-                Files.copy(input, percorsoFile); // scrivo fisicamente il file sul disco
+                Files.copy(input, percorsoFile); 
             }
         }
 
-        // Creo il bean prodotto e lo riempio
         ProdottoBean prodotto = new ProdottoBean();
         prodotto.setNome(nome);
         prodotto.setDescrizione(descrizione);
         prodotto.setPrezzo(prezzo);
         prodotto.setQuantita(quantita);
         prodotto.setIdCategoria(idCategoria);
-        prodotto.setImmagine(nomeFileImmagine); // salvo solo il NOME del file, non il file
+        prodotto.setImmagine(nomeFileImmagine); 
 
-        //  Salvo il prodotto nel database tramite il DAO
         DataSource connessioneDB = (DataSource) getServletContext().getAttribute("DataSource");
         ProdottoDao prodottoDao = new ProdottoDaoImpl(connessioneDB);
 
