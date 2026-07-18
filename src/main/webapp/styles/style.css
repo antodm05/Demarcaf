@@ -1,35 +1,35 @@
 
-body {  /* stile generale */
+body { 
   
     font-family: Arial, Helvetica, sans-serif;
-    color: #2E2E2E;                              /*  testo grigio scuro */
-    background-color: #F5F0E6;               /* Sfondo color crema */
+    color: #2E2E2E;                              
+    background-color: #F5F0E6;               
     margin: 0;
     padding: 0;
-    line-height: 1.6;                       /*spazio verticale tra le righe di testo */
-    display: flex;                 /* impila header, contenuto, footer in colonna */
+    line-height: 1.6;                      
+    display: flex;               
     flex-direction: column;
-    min-height: 100vh;             /* il body e' alto almeno quanto lo schermo */
+    min-height: 100vh;          
 }
 
 h1, h2, h3 {
-    color: #3E2723;     /* Marrone scuro*/
+    color: #3E2723;    
 }
 
 
 
 
-/* menu uguale per ogni pagina  */
+
 .header-sito {
-    background-color: #3E2723;   /* marrone scuro */
+    background-color: #3E2723;   
     display: flex;
-    justify-content: space-between;   /* logo a sinistra, menu a destra */
+    justify-content: space-between;   
     align-items: center;
     padding: 10px 20px;
     flex-wrap: wrap;
 }
 
-/* Il logo DEMARCAF */
+
 .logo a {
     color: #F5F0E6;
     font-size: 22px;
@@ -38,7 +38,7 @@ h1, h2, h3 {
     letter-spacing: 1px;
 }
 
-/* Il menu */
+
 .header-sito nav ul {
     list-style: none;
     margin: 0;
@@ -59,7 +59,6 @@ h1, h2, h3 {
 }
 
 
-/* Do un po' di spazio e menu come figlio diretto del bod */
 body > h1,
 body > h2,
 body > p,
@@ -70,25 +69,24 @@ body > nav + * {
     margin-right: 20px;
 }
 
-/*form , tab e bottoni */
 
 fieldset {
-    border: 1px solid #6F4E37;   /* marrone */
-    border-radius: 6px;           /* arrotondo */
+    border: 1px solid #6F4E37;   
+    border-radius: 6px;           
     padding: 15px;
     margin-bottom: 15px;
-    background-color: #FFFFFF;    /* bianco */
+    background-color: #FFFFFF;   
 }
 
 legend {
-    color: #6F4E37;    /* sempre marrone */
+    color: #6F4E37;    
     font-weight: bold;
     padding: 0 8px;
 }
 
 
 label {
-    display: inline-block;  /* stessa linea */
+    display: inline-block;  
     width: 180px;          
     font-weight: bold;
 }
@@ -102,49 +100,50 @@ input[type="date"],
 textarea,
 select {
     padding: 6px;
-    border: 1px solid #CCCCCC;  /* bordo grigio */
-    border-radius: 4px;                         /* arrotondo */
+    border: 1px solid #CCCCCC;  
+    border-radius: 4px;                        
     font-size: 14px;
 }
 
 
 input[type="submit"] {
-    background-color: #6F4E37;   /* marrone */
-    color: #FFFFFF;              /* testo bianco */
+    background-color: #6F4E37;  
+    color: #FFFFFF;              
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     font-size: 15px;
-    cursor: pointer;            /*mostro la mano */
+    cursor: pointer;              
+        margin-top: 8px;            
 }
 
 input[type="submit"]:hover {
-    background-color: #3E2723;   /* piu' scuro al passaggio */
+    background-color: #3E2723;   
 }
 
-/* La classe per js */
+
 .error {
-    border: 2px solid #C62828;   /* bordo rosso */
-    background-color: #FFEBEE;                   /*  rosa chiaro */
+    border: 2px solid #C62828;  
+    background-color: #FFEBEE;                   
 }
 
 
 .messaggioErrore {
-    color: #C62828;    /* testo rosso */
+    color: #C62828;    
     font-size: 13px;
     margin-left: 10px;
 }
 
 
 table {
-    border-collapse: collapse;   /* linea singola + moderna */
+    border-collapse: collapse;  
     width: 90%;
     margin: 20px;
     background-color: #FFFFFF;
 }
 
 th {
-    background-color: #6F4E37;   /*  marrone */
+    background-color: #6F4E37;   
     color: #FFFFFF;
     padding: 10px;
     text-align: left;
@@ -152,18 +151,16 @@ th {
 
 td {
     padding: 8px 10px;
-    border-bottom: 1px solid #DDDDDD;   /* linea sottile per separare */
+    border-bottom: 1px solid #DDDDDD;   
 }
 
-/* Righe alternate in pos pari  */
+/* Righe alternate   */
 tr:nth-child(even) {
     background-color: #F9F6F0;
 }
 
-                                    /* resposive  */
+                                   
                                     
-                                    /* Riquadro attorno */
-
                                     
 @media (max-width: 600px) {
 
@@ -180,7 +177,7 @@ tr:nth-child(even) {
         margin-bottom: 5px;
     }
 
-                                               /* per i campi do molto spazio */
+                                             
 
     input[type="text"],
     input[type="email"],
@@ -209,12 +206,11 @@ tr:nth-child(even) {
 }
 
 
- /* miglioro un attimo lo spazio tra bottone e quantita*/
 
 .catalogo-prodotto {
 
     background-color:#FFFFFF;
-    border: 1px solid #6F4E37;   /* bordo marrone*/
+    border: 1px solid #6F4E37;   
     border-radius: 6px;
     padding: 15px 20px;
     margin: 15px 20px;
@@ -226,22 +222,17 @@ tr:nth-child(even) {
 }
 
 
-input[type="submit"] {
-    margin-top: 8px;
-}
-
-
 
 img {
-    max-width: 100%;   /* l'immagine non supera la larghezza disponibile */
+    max-width: 100%;   
     height: auto;      
 }
 
 
-/* info contatti */
+
 .footer-sito {
-    background-color: #3E2723;   /* marrone scuro*/
-    color: #F5F0E6;              /*  crema */
+    background-color: #3E2723;   
+    color: #F5F0E6;              
     margin-top: auto;              
     padding: 30px 20px 15px 20px;
 }
@@ -249,13 +240,13 @@ img {
 
 .footer-contenuto {
     display: flex;
-    justify-content: space-around;   /* distribuzuione uniforme */
-    flex-wrap: wrap;                 /* vanno a capo su schermo piccolo */
+    justify-content: space-around;   
+    flex-wrap: wrap;                 
     gap: 20px;
 }
 
 .footer-colonna h4 {
-    color: #F5F0E6;   /*  crema */
+    color: #F5F0E6;   
     margin-bottom: 10px;
 }
 
@@ -269,16 +260,15 @@ img {
     text-align: center;
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid #6F4E37;   /* linea */
+    border-top: 1px solid #6F4E37;   
     font-size: 13px;
 }
 
 
 
-/* solo per i bottoni */
 .bottone {
     display: inline-block;       
-    background-color: #6F4E37;      /* marrone  */
+    background-color: #6F4E37;    
     color: #FFFFFF;             
     padding: 10px 20px;
     border-radius: 4px;
@@ -291,7 +281,7 @@ img {
     background-color: #3E2723;      
 }
 
-/*per i dettagli */
+/* dettagli */
 .bottone-piccolo {
     display: inline-block;
     background-color: #6F4E37;
@@ -310,7 +300,7 @@ img {
 
 .bottone-rimuovi {
     display: inline-block;
-    background-color: #C62828;      /* rosso*/
+    background-color: #C62828;      
     color: #FFFFFF;
     padding: 5px 12px;
     border-radius: 4px;
@@ -325,16 +315,14 @@ img {
 
 
 .hero {
-   
-    /* metto un velo scuro semi trasparente con il colore marrone per migliorare la leggibilita */
-    
+       
        background-image: linear-gradient(rgba(62, 39, 35, 0.5), rgba(62, 39, 35, 0.5)), url("../images/sfondo-home.jpeg");  
        background-size: cover;  
        background-position: center;   
        height: 400px;                
     display: flex;
-    align-items: center;            /* centra il testo verticalmente */
-    justify-content: center;        /*  orizzontalmente */
+    align-items: center;            
+    justify-content: center;        
     text-align: center;
 }
 
