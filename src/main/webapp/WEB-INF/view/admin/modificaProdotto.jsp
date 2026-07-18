@@ -17,7 +17,7 @@
 
     <form action="AdminAggiornaProdottoServlet" method="post" enctype="multipart/form-data">
 
-        <!-- Campo nascosto con l'id -->
+     
         <input type="hidden" name="id" value="${prodotto.idProdotto}"/>
 
         <fieldset>
@@ -48,19 +48,13 @@
            
     <label for="categoria">Categoria:</label>
 
-    <!-- Il menu a tendina -->
+    
     <select id="categoria" name="categoria" required="required">
 
-        <!-- Ciclo su OGNI categoria presente nel db -->
+        
         <c:forEach var="categoria" items="${listaCategorie}">
         
-         <!-- Per ogni categoria deve essere quella del prodotto che sto modificando, c:choose che funziona come un if/else -->
          
-<!-- questa categoria coincide con quella del prodotto - Confronto l'id della categoria del ciclo con l id categoria del prodotto -->
-
-<!-- Sono uguali: aggiungo selected="selected" cosi' il menu si apre gia' su questa categoria -->
-
-  <!--  ALTRIMENTI: tutte le altre categorie -->
             <c:choose>            
             
 
@@ -76,7 +70,7 @@
                 <c:otherwise>               
                 
 
-                    <!--  SENZA selected -->
+                  
                     <option value="${categoria.idCategoria}">
                         <c:out value="${categoria.nome}"/>
                     </option>

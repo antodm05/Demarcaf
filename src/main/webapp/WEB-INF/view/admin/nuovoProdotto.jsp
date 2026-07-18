@@ -13,7 +13,6 @@
 
     <h1>Aggiungi nuovo prodotto</h1>
 
-    <!-- multipart/form-data serve per l'upload di file. -->
     <form action="AdminSalvaProdottoServlet" method="post" enctype="multipart/form-data">
 
         <fieldset>
@@ -42,7 +41,7 @@
             <p>
                 <label for="categoria">Categoria:</label>
                 
-                <!-- Menu a tendina -->
+               
                 
                 <select id="categoria" name="categoria" required="required">
                 
@@ -57,7 +56,6 @@
             <p>
                 <label for="immagine">Immagine:</label>
                 
-                <!-- creo il pulsante per scegliere un file -->
                 
                 <input type="file" id="immagine" name="immagine" accept="image/*"/>
             </p>

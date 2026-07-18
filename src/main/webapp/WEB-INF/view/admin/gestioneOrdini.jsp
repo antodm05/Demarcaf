@@ -17,7 +17,7 @@
    
     <h2>Filtra ordini</h2>
 
-    <!-- Filtro per date , get cosi i filtri restano visibili nell'URL -->
+    
     <form action="AdminOrdiniServlet" method="get">
         <fieldset>
             <legend>Per data</legend>
@@ -33,7 +33,7 @@
         </fieldset>
     </form>
 
-    <!-- Filtro per email -->
+    
     <form action="AdminOrdiniServlet" method="get">
         <fieldset>
             <legend>Per cliente</legend>
@@ -48,7 +48,7 @@
    
     <p><a href="AdminOrdiniServlet" class="bottone-piccolo">Mostra tutti gli ordini</a></p>
 
-    <!-- tab ordini -->
+    
     <h2>Elenco ordini</h2>
 
     <c:choose>

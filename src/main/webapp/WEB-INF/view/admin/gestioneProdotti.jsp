@@ -27,7 +27,7 @@
                 <th>Azioni</th>
             </tr>
         </thead>
-        <tbody>     <!-- corpo -->
+        <tbody>   
         
             <c:forEach var="prodotto" items="${listaProdotti}">
                 <tr>
@@ -36,7 +36,6 @@
                     <td>&euro; <c:out value="${prodotto.prezzo}"/></td>
                     <td><c:out value="${prodotto.quantita}"/></td>
                     <td>
-                        <!-- Mostro Attivo o Disattivato -->
                         <c:if test="${prodotto.attivo}">Attivo</c:if>
                         <c:if test="${not prodotto.attivo}">Disattivato</c:if>
                     </td>
