@@ -3,12 +3,12 @@
 
 	<display-name>Demarcaf</display-name>
 
-	<!-- Pagina di default  -->
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
-	<!-- Riferimento al DataSourc -->
+	
 	<resource-ref>
 		<description>Connessione al database Demarcaf</description>
 		<res-ref-name>jdbc/demarcaf</res-ref-name>

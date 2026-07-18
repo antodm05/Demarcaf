@@ -219,7 +219,6 @@ public class OrdineDaoImpl implements OrdineDao {
     }
 
 
-    // -------------------------------------------------------------------
     private OrdineBean estraiOrdine(ResultSet rs) throws SQLException {
         OrdineBean ordine = new OrdineBean();
         ordine.setIdOrdine(rs.getInt("id_ordine"));
