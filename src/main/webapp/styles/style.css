@@ -267,7 +267,8 @@ img {
 
 
 .bottone {
-    display: inline-block;       
+    display: inline-block; 
+        align-self: flex-start;          
     background-color: #6F4E37;    
     color: #FFFFFF;             
     padding: 10px 20px;
