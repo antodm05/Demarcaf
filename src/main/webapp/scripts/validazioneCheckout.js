@@ -30,7 +30,7 @@ function validaIndirizzo() {
 function validaCitta() {
     let campo = document.getElementById("citta");
     let span = document.getElementById("erroreCitta");
-    return validaCampo(campo, patternCitta, span, "Inserisci una citta' valida (solo lettere)");
+    return validaCampo(campo, patternCitta, span, "Inserisci una città valida (solo lettere)");
 }
 
 function validaCap() {

@@ -64,7 +64,7 @@
                         <th>Cliente</th>
                         <th>Totale</th>
                         <th>Stato</th>
-                        <th>Citta'</th>                                              
+                        <th>Città</th>                                              
                           <th>Note</th>
                         
                     </tr>
