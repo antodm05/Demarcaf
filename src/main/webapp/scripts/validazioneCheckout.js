@@ -1,6 +1,6 @@
-const patternIndirizzo = /^[A-Za-zÀ-ù0-9 ,.]{5,}$/;
+const patternIndirizzo = /^[A-Za-zÀ-ù0-9 ,.'-]{5,}$/;
 
-const patternCitta = /^[A-Za-zÀ-ù ]{2,}$/;
+const patternCitta = /^[A-Za-zÀ-ù '-]{2,}$/;
 
 const patternCap = /^[0-9]{5}$/;
 

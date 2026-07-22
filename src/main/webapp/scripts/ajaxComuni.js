@@ -1,4 +1,4 @@
-a
+
 function caricaComuni() {
 
     let provincia = document.getElementById("provincia").value;
