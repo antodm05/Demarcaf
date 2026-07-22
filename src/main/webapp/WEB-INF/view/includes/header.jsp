@@ -15,6 +15,7 @@
                 <c:when test="${empty sessionScope.utenteLoggato}">
                     <li><a href="login.jsp">Accedi</a></li>
                     <li><a href="registrazione.jsp">Registrati</a></li>
+                    <li><a href="CarrelloServlet">Carrello</a></li>
                 </c:when>
                 <c:otherwise>
                     <c:if test="${sessionScope.ruolo == 'admin'}">
